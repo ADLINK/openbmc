@@ -10,6 +10,13 @@ as servers, top of rack switches or RAID appliances. It uses
 [D-Bus](https://www.freedesktop.org/wiki/Software/dbus/) to allow easy
 customization for your platform.
 
+This repository provides early access to Ampere Computing's BMC implementation
+for Ampere's server platform reference designs. It is the intention to submit
+all features in this repository to the OpenBMC main project (github/openbmc)
+in due course.
+
+For open questions and support, please contact support@amperecomputing.com.
+
 ## Setting up your OpenBMC project
 
 ### 1) Prerequisite
@@ -35,7 +42,7 @@ sudo dnf install git python3 gcc g++ gawk which bzip2 chrpath cpio \
 ### 2) Download the source
 
 ```sh
-git clone https://github.com/openbmc/openbmc
+git clone https://github.com/ampere-openbmc/openbmc
 cd openbmc
 ```
 
@@ -54,31 +61,28 @@ supported hardware targets, see the following example:
 $ . setup <machine> [build_dir]
 Target machine must be specified. Use one of:
 
-ahe50dc                 harma                   s7106
-bletchley               kudo                    s8036
-daytonax                lannister               sbp1
-dl360-g11               minerva                 spc621d8hm3
-dl360poc                mori                    starscream
-dl385-g11               mtjade                  system1
-e3c246d4i               mtmitchell              tatlin-archive-x86
-e3c256d4i               ncplite                 tiogapass
-ethanolx                nicole                  transformers
-evb-ast2500             olympus-nuvoton         vegman-n110
-evb-ast2600             p10bmc                  vegman-rx20
-evb-npcm750             palmetto                vegman-sx20
-evb-npcm845             qcom-dc-scm-v1          witherspoon
-f0b                     quanta-q71l             witherspoon-tacoma
-fp5280g3                rl300-g11               x11spi
-g220a                   romed8hm3               yosemite4
-gbs                     romulus                 yosemitev2
-genesis3                s2600wf                 zaius
-greatlakes              s6q
+bletchley               mori                    s8036
+dl360poc                mtjade                  swift
+e3c246d4i               mtmitchell-dcscm        tatlin-archive-x86
+ethanolx                nicole                  tiogapass
+evb-ast2500             olympus-nuvoton         transformers
+evb-ast2600             on5263m5                vegman-n110
+evb-npcm750             p10bmc                  vegman-rx20
+f0b                     palmetto                vegman-sx20
+fp5280g2                qcom-dc-scm-v1          witherspoon
+g220a                   quanta-q71l             witherspoon-tacoma
+gbs                     romed8hm3               x11spi
+greatlakes              romulus                 yosemitev2
+gsj                     s2600wf                 zaius
+kudo                    s6q
+lannister               s7106
 ```
 
-Once you know the target (e.g. romulus), source the `setup` script as follows:
+Source the setup script and use one of the following for Ampere's platform: mtjade,
+mtmitchell-dcscm
 
 ```sh
-. setup romulus
+. setup mtjade
 ```
 
 ### 4) Build
@@ -87,8 +91,86 @@ Once you know the target (e.g. romulus), source the `setup` script as follows:
 bitbake obmc-phosphor-image
 ```
 
+On successful build, the BMC image will be located in
+```
+tmp
+```
+as
+```
+obmc-phosphor-image-<platform>.static.mtd
+obmc-phosphor-image-<platform>.static.mtd.tar
+```
+
+where `<platform>` = mtjade or mtmitchell-dcscm
+
 Additional details can be found in the [docs](https://github.com/openbmc/docs)
 repository.
+
+## Installing BMC firmware
+
+If there is no firmware pre-installed on the system, you will need to program it to the BMC's SPI NOR using an external SPI programmer like Dediprog
+using obmc-phosphor-image-<platform>.static.mtd.
+
+If a previous version of Ampere's OpenBMC has been installed, perform the following steps to update BMC firmware.
+
+- Open new Redfish token:
+```
+$ export token=`curl -k -H "Content-Type: application/json" -X POST https://${BMC_IP}/login -d '{"username" :  "root", "password" :  "0penBmc"}' | grep token | awk '{print $2;}' | tr -d '"'`
+```
+
+- Use Redfish UpdateService to flash the BMC firmware
+```
+$ curl -k -H "X-Auth-Token: $token" \
+       -H "Content-Type: application/octet-stream" \
+       -X POST -T ${BMC_FW}.mtd.tar https://${BMC_IP}/redfish/v1/UpdateService
+```
+
+- Reboot BMC to start the firmware update
+```
+$ curl -c cjar -b cjar -k -H "Content-Type: application/json" -X PUT \
+       -d '{"data": "xyz.openbmc_project.State.BMC.Transition.Reboot"}' \
+        https://root:0penBmc@${BMC_IP}/xyz/openbmc_project/state/bmc0/attr/RequestedBMCTransition`
+```
+
+## Installing SCP/SYS firmware to EEPROM
+
+To install SCP or SYS firmware to boot EEPROM, need to copy it (in *.slim or *.bin format) into the BMC via scp from BMC console:
+
+```
+# scp 10.38.12.53:/tftpboot/altra/altra_scp_1.01.20201019.slim /tmp
+```
+
+## Installing UEFI firmware
+
+- Create MANIFEST file with the following content
+
+```
+purpose=xyz.openbmc_project.Software.Version.VersionPurpose.Host
+version= jade_tianocore_atf_1.99.20201021.img
+KeyType=OpenBMC
+HashType=RSA-SHA256
+MachineName=mtjade
+```
+
+- Then create tar file including the firmware image and MANIFEST file:
+
+```
+$ tar -cvf jade_tianocore_atf_1.99.20201021.tar jade_tianocore_atf_1.99.20201021.img MANIFEST
+```
+
+- Open new Redfish token:
+
+```
+$ export token=`curl -k -H "Content-Type: application/json" -X POST https://${BMC_IP}/login -d '{"username" :  "root", "password" :  "0penBmc"}' | grep token | awk '{print $2;}' | tr -d '"'`
+```
+
+- Use Redfish UpdateService to flash the UEFI firmware
+```
+$ curl -k -H "X-Auth-Token: $token" \
+       -H "Content-Type: application/octet-stream" \
+       -X POST -T jade_tianocore_atf_1.99.20201021.tar \
+        https://${BMC_IP}/redfish/v1/UpdateService
+```
 
 ## OpenBMC Development
 
