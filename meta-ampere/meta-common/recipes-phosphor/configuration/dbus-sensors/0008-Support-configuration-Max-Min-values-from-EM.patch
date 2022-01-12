@@ -1,0 +1,155 @@
+From dc37e57cc04974e2eb912ac27718e0b6c464120e Mon Sep 17 00:00:00 2001
+From: Thang Tran <thuutran@amperecomputing.com>
+Date: Fri, 7 Jun 2024 13:46:07 +0700
+Subject: [PATCH] Support configuration Max/Min values from EM
+
+Almost sensors are using default Max/Min values, sometimes those Max/Min
+values are incorrect.
+E.g: The ADCsensor is setting the default reference voltage is 1.8V. The
+maximum value of adc sensorss are Vref/ScaleFactor. But not all of
+system are using Vref is 1,8V. In this case, the maximum value is
+incorrect.
+
+Solution: Get the MaxValue/MinValue properties that are configured in
+the Entity-Manager to update Max/Min values instead.
+
+Tested:
+   1. Add MaxValue/MinValue properties to EM configuration.
+   2. Check the MaxValue/MinValue properties of sensors.
+   3. The MaxValue/MinValue of sensors are equal MaxValue/MinValue in
+      EM configuration.
+
+Change-Id: I90219e7d78e1d91963542be02e149641264f6ff6
+Signed-off-by: Thang Tran <thuutran@amperecomputing.com>
+---
+ src/ADCSensor.cpp     |  4 ++--
+ src/ADCSensor.hpp     |  2 ++
+ src/ADCSensorMain.cpp | 11 ++++++++++-
+ src/HwmonTempMain.cpp |  9 +++++++++
+ src/Utils.cpp         | 18 ++++++++++++++++++
+ src/Utils.hpp         |  4 ++++
+ 6 files changed, 45 insertions(+), 3 deletions(-)
+
+diff --git a/src/ADCSensor.cpp b/src/ADCSensor.cpp
+index a025419..b65ba13 100644
+--- a/src/ADCSensor.cpp
++++ b/src/ADCSensor.cpp
+@@ -56,10 +56,10 @@ ADCSensor::ADCSensor(const std::string& path,
+                      const double scaleFactor, const float pollRate,
+                      PowerState readState,
+                      const std::string& sensorConfiguration,
++                     const std::pair<double, double>& range,
+                      std::optional<BridgeGpio>&& bridgeGpio) :
+     Sensor(escapeName(sensorName), std::move(thresholdsIn), sensorConfiguration,
+-           "ADC", false, false, maxVoltageReading / scaleFactor,
+-           minVoltageReading / scaleFactor, conn, readState),
++           "ADC", false, false, range.second, range.first, conn, readState),
+     objServer(objectServer), inputDev(io), waitTimer(io), path(path),
+     scaleFactor(scaleFactor),
+     sensorPollMs(static_cast<unsigned int>(pollRate * 1000)),
+diff --git a/src/ADCSensor.hpp b/src/ADCSensor.hpp
+index 81f630d..ed1291d 100644
+--- a/src/ADCSensor.hpp
++++ b/src/ADCSensor.hpp
+@@ -73,7 +73,9 @@ class ADCSensor : public Sensor, public std::enable_shared_from_this<ADCSensor>
+               std::vector<thresholds::Threshold>&& thresholds,
+               double scaleFactor, float pollRate, PowerState readState,
+               const std::string& sensorConfiguration,
++              const std::pair<double, double>& range,
+               std::optional<BridgeGpio>&& bridgeGpio);
++
+     ~ADCSensor() override;
+     void setupRead();
+ 
+diff --git a/src/ADCSensorMain.cpp b/src/ADCSensorMain.cpp
+index 723ff01..e1c2d69 100644
+--- a/src/ADCSensorMain.cpp
++++ b/src/ADCSensorMain.cpp
+@@ -302,10 +302,19 @@ void createSensors(
+                 }
+             }
+ 
++            static constexpr double maxVoltageReading = 1.8; // pre sensor scaling
++            static constexpr double minVoltageReading = 0;
++
++            std::pair<double, double> range =
++                std::make_pair(minVoltageReading/scaleFactor,
++                maxVoltageReading/scaleFactor);
++
++            getRangeValues(range, baseConfiguration->second);
++
+             sensor = std::make_shared<ADCSensor>(
+                 path.string(), objectServer, dbusConnection, io, sensorName,
+                 std::move(sensorThresholds), scaleFactor, pollRate, readState,
+-                *interfacePath, std::move(bridgeGpio));
++                *interfacePath, range, std::move(bridgeGpio));
+             sensor->setupRead();
+         }
+     });
+diff --git a/src/HwmonTempMain.cpp b/src/HwmonTempMain.cpp
+index 96eab9b..63a7b20 100644
+--- a/src/HwmonTempMain.cpp
++++ b/src/HwmonTempMain.cpp
+@@ -369,6 +369,15 @@ void createSensors(
+             }
+             const SensorBaseConfigMap& baseConfigMap =
+                 findSensorCfg->second.config;
++
++            std::pair<double, double> range =
++                std::make_pair(thisSensorParameters.minValue,
++                                thisSensorParameters.maxValue);
++
++            getRangeValues(range, baseConfigMap);
++            thisSensorParameters.minValue = range.first;
++            thisSensorParameters.maxValue = range.second;
++
+             std::vector<std::string>& hwmonName = findSensorCfg->second.name;
+ 
+             // Temperature has "Name", pressure has "Name1"
+diff --git a/src/Utils.cpp b/src/Utils.cpp
+index e3cbfeb..fd2a97c 100644
+--- a/src/Utils.cpp
++++ b/src/Utils.cpp
+@@ -593,6 +593,24 @@ void findLimits(std::pair<double, double>& limits,
+     }
+ }
+ 
++// replaces range if MinValue and MaxValue are found.
++void getRangeValues(std::pair<double, double>& range,
++                    const SensorBaseConfigMap& config)
++{
++    auto maxIt = config.find("MaxValue");
++    auto minIt = config.find("MinValue");
++
++    if (minIt != config.end())
++    {
++        range.first = std::visit(VariantToDoubleVisitor(),minIt->second);
++    }
++
++    if (maxIt != config.end())
++    {
++        range.second = std::visit(VariantToDoubleVisitor(),maxIt->second);
++    }
++}
++
+ void createAssociation(
+     std::shared_ptr<sdbusplus::asio::dbus_interface>& association,
+     const std::string& path)
+diff --git a/src/Utils.hpp b/src/Utils.hpp
+index d76f954..41b5949 100644
+--- a/src/Utils.hpp
++++ b/src/Utils.hpp
+@@ -88,6 +88,10 @@ void createAssociation(
+ void findLimits(std::pair<double, double>& limits,
+                 const SensorBaseConfiguration* data);
+ 
++// replaces range if MinValue and MaxValue are found.
++void getRangeValues(std::pair<double, double>& range,
++                    const SensorBaseConfigMap& data);
++
+ bool readingStateGood(const PowerState& powerState);
+ 
+ constexpr const char* configInterfacePrefix =
+-- 
+2.25.1
+
