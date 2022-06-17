@@ -1,0 +1,92 @@
+From e725c48ebec8d4ecec8fa11884c80283faf52108 Mon Sep 17 00:00:00 2001
+From: Hieu Huynh <hieuh@os.amperecomputing.com>
+Date: Mon, 15 Jul 2024 08:42:44 +0000
+Subject: [PATCH] Prevent showing sensors not belong to the chassis instance
+
+It is a problem that a sensor that does not belong to a chassis
+instance can be obtained via that chassis instance. For example,
+3V3_SB which is belong to the Mt_Mitchell_Motherboard chassis
+instance can be obtained by the GET
+/redfish/v1/Chassis/S0/Sensors/voltage_3V3_SB command, instead of
+returning error.
+This commit resolves the problem by locating the Chassis instance
+to which the sensor belongs by retrieving the Associations's endpoint
+property from the xyz.openbmc_project.Association.Definitions
+interface.
+
+Signed-off-by: Hieu Huynh <hieuh@os.amperecomputing.com>
+Change-Id: I238e5f8ec83cfa8f571db53e9e51ca22717b91a6
+---
+ redfish-core/lib/sensors.hpp | 49 +++++++++++++++++++++++++++++++++---
+ 1 file changed, 46 insertions(+), 3 deletions(-)
+
+diff --git a/redfish-core/lib/sensors.hpp b/redfish-core/lib/sensors.hpp
+index 8be861ba..15d28da8 100644
+--- a/redfish-core/lib/sensors.hpp
++++ b/redfish-core/lib/sensors.hpp
+@@ -2942,7 +2942,7 @@ inline void handleSensorGet(App& app, const crow::Request& req,
+     // and get the path and service name associated with the sensor
+     ::dbus::utility::getDbusObject(
+         sensorPath, interfaces,
+-        [asyncResp, sensorId,
++        [asyncResp, chassisId, sensorId,
+          sensorPath](const boost::system::error_code& ec,
+                      const ::dbus::utility::MapperGetObject& subtree) {
+         BMCWEB_LOG_DEBUG("respHandler1 enter");
+@@ -2959,8 +2959,51 @@ inline void handleSensorGet(App& app, const crow::Request& req,
+                 "Sensor getSensorPaths resp_handler: Dbus error {}", ec);
+             return;
+         }
+-        getSensorFromDbus(asyncResp, sensorPath, subtree);
+-        BMCWEB_LOG_DEBUG("respHandler1 exit");
++
++        const auto& valueIface = *subtree.begin();
++        const std::string& connectionName = valueIface.first;
++
++        sdbusplus::asio::getProperty<
++            std::vector<std::tuple<std::string, std::string, std::string>>>(
++            *crow::connections::systemBus, connectionName, sensorPath,
++            "xyz.openbmc_project.Association.Definitions", "Associations",
++            [asyncResp, chassisId, sensorId, sensorPath, subtree](
++                const boost::system::error_code& ec2,
++                const std::vector<std::tuple<std::string, std::string,
++                                             std::string>>& associationData) {
++            if (ec2)
++            {
++                BMCWEB_LOG_DEBUG("DBUS response error {}", ec2);
++                messages::internalError(asyncResp->res);
++                return;
++            }
++
++            // Get Chassis instance that sensor is belong to
++            // https://github.com/openbmc/phosphor-dbus-interfaces/blob/master/
++            // yaml/xyz/openbmc_project/Association/Definitions.interface.yaml#L6
++            for (const auto& data : associationData)
++            {
++                const std::string& forward = get<0>(data);
++                const std::string& endpoint = get<2>(data);
++
++                BMCWEB_LOG_DEBUG("Association forward: {}", forward);
++                BMCWEB_LOG_DEBUG("Association endpoint: {}", endpoint);
++
++                if (forward == "chassis")
++                {
++                    if (chassisId != endpoint.substr(endpoint.rfind('/') + 1))
++                    {
++                        BMCWEB_LOG_WARNING("Sensor not found from {}",
++                                           chassisId);
++                        messages::resourceNotFound(asyncResp->res, "Sensor",
++                                                   sensorId);
++                        return;
++                    }
++                }
++            }
++            getSensorFromDbus(asyncResp, sensorPath, subtree);
++            BMCWEB_LOG_DEBUG("respHandler1 exit");
++        });
+     });
+ }
+ 
+-- 
+2.25.1
+
