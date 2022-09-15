@@ -4,7 +4,7 @@ SRC_URI += " \
              file://firmware_update.sh \
            "
 
-PACKAGECONFIG:append = " flash_bios static-dual-image"
+PACKAGECONFIG:append = " flash_bios"
 
 RDEPENDS:${PN} += "bash"
 
