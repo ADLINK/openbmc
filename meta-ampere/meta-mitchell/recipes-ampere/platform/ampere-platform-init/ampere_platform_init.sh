@@ -4,6 +4,9 @@
 # shellcheck source=meta-ampere/meta-mitchell/recipes-ampere/platform/ampere-platform-init/mtmitchell_platform_gpios_init.sh
 source /usr/sbin/platform_gpios_init.sh
 
+# Update the Ext Vref threshold in the Entity Manager config when the BMC reboot
+/usr/sbin/ampere_ext_vref_control.sh update-sensor-config
+
 #pre platform init function. implemented in platform_gpios_init.sh
 pre-platform-init
 
