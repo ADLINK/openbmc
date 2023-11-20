@@ -1,0 +1,46 @@
+From 81a9d04853f03600a170829abf6e2db2e2069a26 Mon Sep 17 00:00:00 2001
+From: Thang Tran <thuutran@amperecomputing.com>
+Date: Thu, 16 May 2024 13:19:19 +0700
+Subject: [PATCH] Limit power actions when the host is off
+
+When the host is off, power reset/forceWarmReboot/GracefulReboot
+should not affect.
+This commit supports that limitation.
+
+Tested:
+        1. Power off the host.
+        2. Try power reset/forceWarmReboot/GracefulReboot
+        3. These action should not affect.
+
+Change-Id: Ia6a32a04cc7d9eb16aa5371745bed462c33c29dd
+Signed-off-by: Thu Ba Nguyen <tbnguyen@amperecomputing.com>
+Signed-off-by: Thang Tran    <thuutran@amperecomputing.com>
+---
+ host_state_manager.cpp | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/host_state_manager.cpp b/host_state_manager.cpp
+index 365ed84..ee9ae20 100644
+--- a/host_state_manager.cpp
++++ b/host_state_manager.cpp
+@@ -144,6 +144,17 @@ void Host::executeTransition(Transition tranReq)
+ {
+     auto& sysdUnit = getTarget(tranReq);
+ 
++#ifdef ENABLE_WARM_REBOOT 
++    auto hostState = server::Host::currentHostState();
++
++    if ((HostState::Running != hostState) &&
++        ((Transition::GracefulWarmReboot == tranReq) ||
++        (Transition::ForceWarmReboot == tranReq)))
++    {
++        return;
++    }
++#endif
++
+     auto method = this->bus.new_method_call(SYSTEMD_SERVICE, SYSTEMD_OBJ_PATH,
+                                             SYSTEMD_INTERFACE, "StartUnit");
+ 
+-- 
+2.25.1
+
