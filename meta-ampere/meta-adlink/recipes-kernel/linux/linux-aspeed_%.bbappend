@@ -5,12 +5,12 @@ SRC_URI += " \
 	    file://aspeed-bmc-adlink-comhpcalt.dts \
            "
 
-#do_patch[postfuncs] += "copy_dts_file"
+do_patch[postfuncs] += "copy_dts_file"
 
 do_patch:apend(){
-        cp -f ${WORKDIR}/aspeed-bmc-adlink-comhpcalt.dts ${S}/arch/arm/boot/dts/
+        cp -f ${WORKDIR}/aspeed-bmc-adlink-comhpcalt.dts ${S}/arch/arm/boot/dts/aspeed/
 }
 
 copy_dts_file(){
-        cp -f ${WORKDIR}/aspeed-bmc-adlink-comhpcalt.dts ${S}/arch/arm/boot/dts/
+        cp -f ${WORKDIR}/aspeed-bmc-adlink-comhpcalt.dts ${S}/arch/arm/boot/dts/aspeed/
 }
