@@ -1,0 +1,18 @@
+{
+    "inlet": [
+        {"instance": 1, "dbus": "/xyz/openbmc_project/sensors/temperature/PSU0_TEMP", "record_id": 243}
+    ],
+    "baseboard": [
+        {"instance": 1, "dbus": "/xyz/openbmc_project/sensors/temperature/TS1_Temp", "record_id": 1},
+        {"instance": 2, "dbus": "/xyz/openbmc_project/sensors/temperature/TS2_Temp", "record_id": 2}
+    ],
+    "cpu": [
+        { "instance": 1, "dbus": "/xyz/openbmc_project/sensors/temperature/S0_SOC_Temp", "record_id": 107 },
+        { "instance": 2, "dbus": "/xyz/openbmc_project/sensors/temperature/S0_SOC_VRD_Temp", "record_id": 108 },
+        { "instance": 3, "dbus": "/xyz/openbmc_project/sensors/temperature/S0_DIMM_VRD_Temp", "record_id": 109 },
+        { "instance": 4, "dbus": "/xyz/openbmc_project/sensors/temperature/S0_Core_VRD_Temp", "record_id": 110 },
+        { "instance": 5, "dbus": "/xyz/openbmc_project/sensors/temperature/S0_DIMMG0_Temp", "record_id": 111 },
+        { "instance": 6, "dbus": "/xyz/openbmc_project/sensors/temperature/S0_RCA_VR_Temp", "record_id": 154 },
+        { "instance": 13, "dbus": "/xyz/openbmc_project/sensors/temperature/S0_DIMMG1_Temp", "record_id": 105 }
+    ]
+}

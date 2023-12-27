@@ -1,0 +1,268 @@
+[
+    {
+        "path": "system/board/COM_HPC_ALT_Carrier/FAN1",
+        "endpoints":
+        [
+            {
+                "types":
+                {
+                    "rType": "inventory",
+                    "fType": "sensors"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/sensors/fan_tach/FAN1"
+                ]
+            },
+            {
+                "types": {
+                    "rType": "fault_identified_by",
+                    "fType": "fault_identifying"
+                },
+                "paths": [
+                    "/xyz/openbmc_project/led/groups/fan_fail_led"
+                ]
+            },
+            {
+                "types":
+                {
+                    "rType": "cooled_by",
+                    "fType": "cooling"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/inventory/system/chassis"
+                ]
+            }
+        ]
+    },
+    {
+        "path": "system/board/COM_HPC_ALT_Carrier/FAN2",
+        "endpoints":
+        [
+            {
+                "types":
+                {
+                    "rType": "inventory",
+                    "fType": "sensors"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/sensors/fan_tach/FAN2"
+                ]
+            },
+            {
+                "types": {
+                    "rType": "fault_identified_by",
+                    "fType": "fault_identifying"
+                },
+                "paths": [
+                    "/xyz/openbmc_project/led/groups/fan_fail_led"
+                ]
+            },
+            {
+                "types":
+                {
+                    "rType": "cooled_by",
+                    "fType": "cooling"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/inventory/system/chassis"
+                ]
+            }
+        ]
+    },
+    {
+        "path": "system/board/COM_HPC_ALT_Carrier/FAN4",
+        "endpoints":
+        [
+            {
+                "types":
+                {
+                    "rType": "inventory",
+                    "fType": "sensors"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/sensors/fan_tach/FAN4"
+                ]
+            },
+            {
+                "types": {
+                    "rType": "fault_identified_by",
+                    "fType": "fault_identifying"
+                },
+                "paths": [
+                    "/xyz/openbmc_project/led/groups/fan_fail_led"
+                ]
+            },
+            {
+                "types":
+                {
+                    "rType": "cooled_by",
+                    "fType": "cooling"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/inventory/system/chassis"
+                ]
+            }
+        ]
+    },
+    {
+        "path": "system/board/COM_HPC_ALT_Carrier/FAN5",
+        "endpoints":
+        [
+            {
+                "types":
+                {
+                    "rType": "inventory",
+                    "fType": "sensors"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/sensors/fan_tach/FAN5"
+                ]
+            },
+            {
+                "types": {
+                    "rType": "fault_identified_by",
+                    "fType": "fault_identifying"
+                },
+                "paths": [
+                    "/xyz/openbmc_project/led/groups/fan_fail_led"
+                ]
+            },
+            {
+                "types":
+                {
+                    "rType": "cooled_by",
+                    "fType": "cooling"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/inventory/system/chassis"
+                ]
+            }
+        ]
+    },
+    {
+        "path": "system/powersupply/PowerSupply",
+        "endpoints":
+        [
+            {
+                "types":
+                {
+                    "rType": "inventory",
+                    "fType": "sensors"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/sensors/voltage/12V_MOD",
+                    "/xyz/openbmc_project/sensors/voltage/1V15_BMC_AUX",
+                    "/xyz/openbmc_project/sensors/voltage/1V8",
+                    "/xyz/openbmc_project/sensors/voltage/1V8_Standby",
+                    "/xyz/openbmc_project/sensors/voltage/2V5_RT",
+                    "/xyz/openbmc_project/sensors/voltage/3V3",
+                    "/xyz/openbmc_project/sensors/voltage/3V3_Standby",
+                    "/xyz/openbmc_project/sensors/voltage/5_Volt",
+                    "/xyz/openbmc_project/sensors/voltage/5_Volt_Standby",
+                    "/xyz/openbmc_project/sensors/voltage/VCC_5V_Standby_In"
+                ]
+            },
+            {
+                "types":
+                {
+                    "rType": "inventory",
+                    "fType": "leds"
+                },
+                "paths":
+                [
+                    "/xyz/openbmc_project/led/physical/power"
+                ]
+            },
+            {
+                "types": {
+                    "rType": "powered_by",
+                    "fType": "powering"
+                },
+                "paths": [
+                    "/xyz/openbmc_project/inventory/system/chassis"
+                ]
+            }
+        ]
+    },
+    {
+        "path": "system/chassis",
+        "endpoints":
+        [
+	        {
+                "types": {
+                    "rType": "powering",
+                    "fType": "powered_by"
+                },
+                "paths": [
+                    "/xyz/openbmc_project/inventory/system/powersupply/PowerSupply"
+                ]
+            },
+            {       
+                "types": {
+                    "rType": "chassis",
+                    "fType": "all_sensors"
+                },  
+                "paths": [
+                    "/xyz/openbmc_project/sensors/voltage/12V_MOD",
+                    "/xyz/openbmc_project/sensors/voltage/1V15_BMC_AUX",
+                    "/xyz/openbmc_project/sensors/voltage/1V8",
+                    "/xyz/openbmc_project/sensors/voltage/1V8_Standby",
+                    "/xyz/openbmc_project/sensors/voltage/2V5_RT",
+                    "/xyz/openbmc_project/sensors/voltage/3V3",
+                    "/xyz/openbmc_project/sensors/voltage/3V3_Standby",
+                    "/xyz/openbmc_project/sensors/voltage/5_Volt",
+                    "/xyz/openbmc_project/sensors/voltage/5_Volt_Standby",
+                    "/xyz/openbmc_project/sensors/voltage/Battery_Voltage",
+                    "/xyz/openbmc_project/sensors/voltage/VCC_5V_Standby_In",
+                    "/xyz/openbmc_project/sensors/fan_pwm/Pwm_1",
+                    "/xyz/openbmc_project/sensors/fan_pwm/Pwm_2",
+                    "/xyz/openbmc_project/sensors/fan_pwm/Pwm_4",
+                    "/xyz/openbmc_project/sensors/fan_pwm/Pwm_5",
+                    "/xyz/openbmc_project/sensors/fan_tach/FAN1",
+                    "/xyz/openbmc_project/sensors/fan_tach/FAN2",
+                    "/xyz/openbmc_project/sensors/fan_tach/FAN4",
+                    "/xyz/openbmc_project/sensors/fan_tach/FAN5",
+                    "/xyz/openbmc_project/sensors/temperature/Front_Temperature",
+                    "/xyz/openbmc_project/sensors/temperature/Rear_Temperature",
+                    "/xyz/openbmc_project/sensors/temperature/SoC_Temperature",
+                    "/xyz/openbmc_project/sensors/temperature/SoC_VRD_Temp_Max",
+                    "/xyz/openbmc_project/sensors/temperature/DIMM_VRD_Temp_Max",
+                    "/xyz/openbmc_project/sensors/temperature/Core_VRD_Temp_Max",
+                    "/xyz/openbmc_project/sensors/temperature/DIMM1_Temperature",
+                    "/xyz/openbmc_project/sensors/temperature/DIMM2_Temperature",
+                    "/xyz/openbmc_project/sensors/temperature/DIMM3_Temperature",
+                    "/xyz/openbmc_project/sensors/temperature/DIMM4_Temperature",
+                    "/xyz/openbmc_project/sensors/temperature/DIMM5_Temperature",
+                    "/xyz/openbmc_project/sensors/temperature/DIMM6_Temperature",
+                    "/xyz/openbmc_project/sensors/temperature/RCA_VRD_Temp_Max",
+                    "/xyz/openbmc_project/sensors/power/RCA_VRD_Power",
+                    "/xyz/openbmc_project/sensors/temperature/MEM_HOT_Threshold",
+                    "/xyz/openbmc_project/sensors/temperature/SoC_VR_HOT_Threshold",
+                    "/xyz/openbmc_project/sensors/voltage/Core_VRD_Voltage",
+                    "/xyz/openbmc_project/sensors/voltage/SoC_VRD_Voltage",
+                    "/xyz/openbmc_project/sensors/voltage/DIMM_VRD1_Voltage",
+                    "/xyz/openbmc_project/sensors/voltage/DIMM_VRD2_Voltage",
+                    "/xyz/openbmc_project/sensors/voltage/RCA_VRD_Voltage",
+                    "/xyz/openbmc_project/sensors/current/Core_VRD_Current",
+                    "/xyz/openbmc_project/sensors/current/SoC_VRD_Current",
+                    "/xyz/openbmc_project/sensors/current/DIMM_VRD1_Current",
+                    "/xyz/openbmc_project/sensors/current/DIMM_VRD2_Current",
+                    "/xyz/openbmc_project/sensors/current/RCA_VRD_Current",
+                    "/xyz/openbmc_project/sensors/power/Core_VRD_Power_5s_Avg",
+                    "/xyz/openbmc_project/sensors/power/SoC_IO_Power",
+                    "/xyz/openbmc_project/sensors/power/DIMM_VRD1_Power",
+                    "/xyz/openbmc_project/sensors/power/DIMM_VRD2_Power"
+                ]
+            }
+        ]
+    }
+]
