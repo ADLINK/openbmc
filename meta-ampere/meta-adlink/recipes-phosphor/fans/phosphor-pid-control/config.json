@@ -1,73 +1,73 @@
 {
     "sensors": [
     {
-        "name": "SoC_Temperature",
+        "name": "SOC_TEMP",
         "type": "temp",
-        "readPath": "/xyz/openbmc_project/sensors/temperature/SoC_Temperature",
+        "readPath": "/xyz/openbmc_project/sensors/temperature/SOC_TEMP",
         "timeout": 0,
         "ignoreDbusMinMax": false,
         "unavailableAsFailed": false
     },
     {
-        "name": "Front_Temperature",
+        "name": "FRONT_TEMP",
         "type": "temp",
-        "readPath": "/xyz/openbmc_project/sensors/temperature/Front_Temperature",
+        "readPath": "/xyz/openbmc_project/sensors/temperature/FRONT_TEMP",
         "timeout": 0,
         "ignoreDbusMinMax": false,
         "unavailableAsFailed": false
     },
     {
-        "name": "Rear_Temperature",
+        "name": "REAR_TEMP",
         "type": "temp",
-        "readPath": "/xyz/openbmc_project/sensors/temperature/Rear_Temperature",
+        "readPath": "/xyz/openbmc_project/sensors/temperature/REAR_TEMP",
         "timeout": 0,
         "ignoreDbusMinMax": false,
         "unavailableAsFailed": false
     },
     {
-        "name": "DIMM1_Temperature",
+        "name": "DIMM1_TEMP",
         "type": "temp",
-        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM1_Temperature",
+        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM1_TEMP",
         "timeout": 0,
         "ignoreDbusMinMax": false,
         "unavailableAsFailed": false
     },
     {
-        "name": "DIMM2_Temperature",
+        "name": "DIMM2_TEMP",
         "type": "temp",
-        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM2_Temperature",
+        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM2_TEMP",
         "timeout": 0,
         "ignoreDbusMinMax": false,
         "unavailableAsFailed": false
     },
     {
-        "name": "DIMM3_Temperature",
+        "name": "DIMM3_TEMP",
         "type": "temp",
-        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM3_Temperature",
+        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM3_TEMP",
         "timeout": 0,
         "ignoreDbusMinMax": false,
         "unavailableAsFailed": false
     },
     {
-        "name": "DIMM4_Temperature",
+        "name": "DIMM4_TEMP",
         "type": "temp",
-        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM4_Temperature",
+        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM4_TEMP",
         "timeout": 0,
         "ignoreDbusMinMax": false,
         "unavailableAsFailed": false
     },
     {
-        "name": "DIMM5_Temperature",
+        "name": "DIMM5_TEMP",
         "type": "temp",
-        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM5_Temperature",
+        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM5_TEMP",
         "timeout": 0,
         "ignoreDbusMinMax": false,
         "unavailableAsFailed": false
     },
     {
-        "name": "DIMM6_Temperature",
+        "name": "DIMM6_TEMP",
         "type": "temp",
-        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM6_Temperature",
+        "readPath": "/xyz/openbmc_project/sensors/temperature/DIMM6_TEMP",
         "timeout": 0,
         "ignoreDbusMinMax": false,
         "unavailableAsFailed": false
@@ -148,8 +148,8 @@
                     "name": "FrontTemperature",
                     "type": "stepwise",
                     "inputs": [
-                        "Front_Temperature",
-                        "Rear_Temperature"
+                        "FRONT_TEMP",
+                        "REAR_TEMP"
                      ],
                     "setpoint": 0.0, 
                     "pid": {
