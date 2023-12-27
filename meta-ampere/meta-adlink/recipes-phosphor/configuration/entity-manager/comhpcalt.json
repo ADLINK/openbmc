@@ -1,0 +1,1026 @@
+[
+    {
+        "Exposes": [
+            {
+                "Type": "AspeedFan",
+                "Index": 0,
+                "Name": "FAN1",
+                "PowerState": "On",
+                "Connector": {
+                    "Name": "FAN1",
+                    "Pwm": 0,
+                    "Tachs": [0]
+                }
+            },
+            {
+                "Type": "AspeedFan",
+                "Index": 1,
+                "Name": "FAN2",
+                "PowerState": "On",
+                "Connector": {
+                    "Name": "FAN2",
+                    "Pwm": 1,
+                    "Tachs": [1]
+                }
+            },
+            {
+                "Type": "AspeedFan",
+                "Index": 3,
+                "Name": "FAN4",
+                "PowerState": "On",
+                "Connector": {
+                    "Name": "FAN4",
+                    "Pwm": 3,
+                    "Tachs": [3]
+                }
+            },
+            {
+                "Type": "AspeedFan",
+                "Index": 4,
+                "Name": "FAN5",
+                "PowerState": "On",
+                "Connector": {
+                    "Name": "FAN5",
+                    "Pwm": 4,
+                    "Tachs": [4]
+                }
+            },
+        {
+            "Index": 0,
+            "Name": "2V5 RT",
+            "ScaleFactor": 0.411522634,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 13.0
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 12.9
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 0.0
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 0.0
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 1,
+            "Name": "12V MOD",
+            "PowerState": "On",
+            "ScaleFactor": 0.108695652,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 13.0
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 12.9
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 11.1
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 11.0
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 2,
+            "Name": "VCC 5V Standby In",
+            "ScaleFactor": 0.272479564,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 5.5
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 5.4
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 4.6
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 4.5
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 3,
+            "Name": "1V15 BMC AUX",
+            "ScaleFactor": 1,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 2.0
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 1.9
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 0.9
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 5,
+            "Name": "5 Volt Standby",
+            "PowerState": "On",
+            "ScaleFactor": 0.272479564,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 5.5
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 5.4
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 4.5
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 4.4
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 6,
+            "Name": "5 Volt",
+            "PowerState": "On",
+            "ScaleFactor": 0.272479564,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 5.5
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 5.4
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 4.5
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 4.4
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 7,
+            "Name": "3V3",
+            "PowerState": "On",
+            "ScaleFactor": 0.411522634,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 4.0
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 3.9
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 3.0
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 2.9
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 8,
+            "Name": "3V3 Standby",
+            "ScaleFactor": 0.411522634,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 4.0
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 3.9
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 2.5
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 2.4
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 10,
+            "Name": "1V8",
+            "PowerState": "On",
+            "ScaleFactor": 0.750469043,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 2.5
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 2.4
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 0.9
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 12,
+            "Name": "1V8 Standby",
+            "ScaleFactor": 0.750469043,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 2.5
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 2.4
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 0.9
+                }
+            ],
+            "Type": "ADC"
+        },
+        {
+            "Index": 13,
+            "Name": "Battery Voltage",
+            "ScaleFactor": 0.5,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 13.0
+                }, 
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 12.9
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 0.9
+                }
+            ],
+            "Type": "ADC"
+        },
+            {
+                "Name": "BMC",
+                "Type": "BMC"
+            },
+            {
+                "Address": "0x50",
+                "Bus": "6",
+                "Name": "MB FRU",
+                "Type": "EEPROM"
+            },
+            {
+                "Address": "0x48",
+                "Bus": 7,
+                "Name": "Front Temperature",
+                "Thresholds": [
+                    {
+                        "Direction": "greater than",
+                        "Name": "upper critical",
+                        "Severity": 1,
+                        "Value": 85
+                    },
+                {             
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 80
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": -35
+                },                 
+                {            
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": -40
+                } 
+                ],
+                "Type": "TMP112"
+            },
+            {
+                "Address": "0x49",
+                "Bus": 7,
+                "Name": "Rear Temperature",
+                "Thresholds": [
+                    {
+                        "Direction": "greater than",
+                        "Name": "upper critical",
+                        "Severity": 1,
+                        "Value": 85
+                    },
+                {                                   
+                    "Direction": "greater than",    
+                    "Name": "upper non critical",   
+                    "Severity": 0,                  
+                    "Value": 80
+                },                                  
+                {                                   
+                    "Direction": "less than",       
+                    "Name": "lower non critical",   
+                    "Severity": 0,                  
+                    "Value": -35                    
+                },                                  
+                {                                
+                    "Direction": "less than",    
+                    "Name": "lower critical",    
+                    "Severity": 1,               
+                    "Value": -40             
+                }
+                ],
+                "Type": "TMP112"
+            },
+        {
+            "Address": "0x10",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "SoC Temperature",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 105
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 105
+                }
+            ],
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x11",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "SoC VRD Temp Max",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 10,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x12",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM VRD Temp Max",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 10,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x13",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "Core VRD Temp Max",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 10,
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 105
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 105
+                }
+            ],
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x14",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM1 Temperature",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 80
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 80
+                }
+            ],
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x15",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM2 Temperature",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 80
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 80
+                }
+            ],
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x16",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM3 Temperature",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PowerState": "On",
+            "PollRate": 5,
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 80
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 80
+                }
+            ],
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x18",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM4 Temperature",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 80
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 80
+                }
+            ],
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x19",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM5 Temperature",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 80
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 80
+                }
+            ],
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x1A",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM6 Temperature",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 80
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 80
+                }
+            ],
+            "Type": "IpmbSensor"
+        },        
+        {
+            "Address": "0x1C",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "RCA VRD Temp Max",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 10,
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 80
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 80
+                }
+            ],
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x20",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "zzzP0_0",
+            "SensorType": "power",
+            "MaxValue": 1023,
+            "MinValue": 0,
+            "PowerState": "On",
+            "PollRate": 5,
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x21",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "zzzP1_0",
+            "SensorType": "power",
+            "MaxValue": 1023,
+            "MinValue": 0,
+            "PowerState": "On",
+            "PollRate": 5,
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x22",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "zzzP2_0",
+            "SensorType": "power",
+            "MaxValue": 1023,
+            "MinValue": 0,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x23",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "zzzP3_0",
+            "SensorType": "power",
+            "MaxValue": 1023,
+            "MinValue": 0,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x26",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "zzzP0_1",
+            "SensorType": "power",
+            "MaxValue": 255,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x27",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "zzzP1_1",
+            "SensorType": "power",
+            "MaxValue": 255,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x28",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "zzzP2_1",
+            "SensorType": "power",
+            "MaxValue": 255,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x29",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "zzzP3_1",
+            "SensorType": "power",
+            "MaxValue": 255,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x2A",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "RCA VRD Power",
+            "SensorType": "power",
+            "MaxValue": 1023,
+            "MinValue": 0,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x32",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "MEM HOT Threshold",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 15,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x33",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "SoC VR HOT Threshold",
+            "SensorType": "temperature",
+            "MaxValue": 256.0,
+            "MinValue": -255.0,
+            "PollRate": 15,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x34",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "Core VRD Voltage",
+            "SensorType": "voltage",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x35",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "SoC VRD Voltage",
+            "SensorType": "voltage",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x36",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM VRD1 Voltage",
+            "SensorType": "voltage",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x37",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM VRD2 Voltage",
+            "SensorType": "voltage",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x38",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "RCA VRD Voltage",
+            "SensorType": "voltage",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x39",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "Core VRD Current",
+            "SensorType": "current",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x3A",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "SoC VRD Current",
+            "SensorType": "current",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x3B",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM VRD1 Current",
+            "SensorType": "current",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x3C",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "DIMM VRD2 Current",
+            "SensorType": "current",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        },
+        {
+            "Address": "0x3D",
+            "Class": "SMPro",
+            "HostSMbusIndex": 0,
+            "Name": "RCA VRD Current",
+            "SensorType": "current",
+            "MaxValue": 32767,
+            "MinValue": 0,
+            "ScaleValue": 0.001,
+            "PollRate": 5,
+            "PowerState": "On",
+            "Type": "IpmbSensor"
+        }
+        ],
+        "Name": "COM-HPC-ALT Carrier",
+        "Probe": "xyz.openbmc_project.FruDevice({'PRODUCT_PRODUCT_NAME': 'COM-HPC-Carrier'})",
+        "Type": "Board",
+        "xyz.openbmc_project.Common.UUID": {
+            "UUID": "$MULTIRECORD_UUID"
+        },
+        "xyz.openbmc_project.Inventory.Decorator.Asset": {
+            "Manufacturer": "$PRODUCT_MANUFACTURER",
+            "Model": "$PRODUCT_PRODUCT_NAME $PRODUCT_VERSION",
+            "PartNumber": "$BOARD_PART_NUMBER",
+            "SerialNumber": "$BOARD_SERIAL_NUMBER"
+        },
+        "xyz.openbmc_project.Inventory.Decorator.AssetTag": {
+            "AssetTag": "$PRODUCT_ASSET_TAG"
+        },
+        "xyz.openbmc_project.Inventory.Item.System": {
+            "Manufacturer": "$PRODUCT_MANUFACTURER",
+            "PartNumber": "$PRODUCT_PART_NUMBER",
+            "SerialNumber": "$PRODUCT_SERIAL_NUMBER"
+        }
+    }
+]
+

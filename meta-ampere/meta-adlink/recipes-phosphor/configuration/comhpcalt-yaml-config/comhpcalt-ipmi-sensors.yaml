@@ -1,0 +1,217 @@
+1: &TEMP_DEFAULTS
+    bExp: 0
+    interfaces:
+        xyz.openbmc_project.Sensor.Value:
+            Value:
+                Offsets:
+                    255:
+                        type: double
+    multiplierM: 1
+    mutability: Mutability::Read
+    offsetB: 0
+    path: /xyz/openbmc_project/sensors/temperature/Front_Temperature
+    rExp: 0
+    readingType: readingData
+    sensorNamePattern: nameLeaf
+    sensorReadingType: 1
+    sensorType: 1
+    serviceInterface: org.freedesktop.DBus.Properties
+    unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
+2:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/Rear_Temperature
+3: &FAN_DEFAULTS
+    sensorType: 4
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN1
+    sensorReadingType: 1
+    multiplierM: 100
+    offsetB: 0
+    rExp: 0
+    unit: xyz.openbmc_project.Sensor.Value.Unit.RPMS
+    mutability: Mutability::Write|Mutability::Read
+    serviceInterface: org.freedesktop.DBus.Properties
+    readingType: readingData
+    sensorNamePattern: nameLeaf
+    interfaces:
+      xyz.openbmc_project.Sensor.Value:
+        Value:
+          Offsets:
+            0x0:
+              type: double
+4:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN2
+5:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN4
+6:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN5
+7: &VOLTAGE_DEFAULTS
+  bExp: 0
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          255:
+            type: double
+  multiplierM: 1
+  mutability: Mutability::Read
+  path: /xyz/openbmc_project/sensors/voltage/2V5_RT
+  offsetB: 0
+  rExp: 0
+  readingType: readingData
+  scale: 0
+  sensorNamePattern: nameLeaf
+  sensorReadingType: 1
+  sensorType: 2
+  serviceInterface: org.freedesktop.DBus.Properties
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+8:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/12V_MOD
+9:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/VCC_5V_Standby_In
+10:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/1V15_BMC_AUX
+11:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/5_Volt_Standby
+12:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/5_Volt
+13:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/3V3
+14:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/3V3_Standby
+15:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/1V8
+16:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/1V8_Standby
+17:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/Battery_Voltage
+18:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/SoC_Temperature
+19:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/SoC_VRD_Temp_Max
+20:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/DIMM_VRD_Temp_Max
+21:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/Core_VRD_Temp_Max
+22:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/DIMM1_Temperature
+23:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/DIMM2_Temperature
+24:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/DIMM3_Temperature
+25:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/DIMM4_Temperature
+26:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/DIMM5_Temperature
+27:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/DIMM6_Temperature
+28:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/RCA_VRD_Temp_Max
+29: &POWER_DEFAULTS
+  bExp: 0
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          255:
+            type: double
+  multiplierM: 1
+  mutability: Mutability::Read
+  path: /xyz/openbmc_project/sensors/power/RCA_VRD_Power
+  offsetB: 0
+  rExp: 0
+  readingType: readingData
+  scale: 0
+  sensorNamePattern: nameLeaf
+  sensorReadingType: 1
+  sensorType: 2
+  serviceInterface: org.freedesktop.DBus.Properties
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Watts
+30:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/MEM_HOT_Threshold
+31:
+  <<: *TEMP_DEFAULTS
+  path: /xyz/openbmc_project/sensors/temperature/SoC_VR_HOT_Threshold
+32: 
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/Core_VRD_Voltage
+33:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/SoC_VRD_Voltage
+34:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/DIMM_VRD1_Voltage
+35:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/DIMM_VRD2_Voltage
+36:
+  <<: *VOLTAGE_DEFAULTS
+  path: /xyz/openbmc_project/sensors/voltage/RCA_VRD_Voltage
+37: &CURRENT_DEFAULTS
+  bExp: 0
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          255:
+            type: double
+  multiplierM: 1
+  mutability: Mutability::Read
+  path: /xyz/openbmc_project/sensors/current/Core_VRD_Current
+  offsetB: 0
+  rExp: 0
+  readingType: readingData
+  scale: 0
+  sensorNamePattern: nameLeaf
+  sensorReadingType: 1
+  sensorType: 2
+  serviceInterface: org.freedesktop.DBus.Properties
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Amperes
+38:
+  <<: *CURRENT_DEFAULTS
+  path: /xyz/openbmc_project/sensors/current/SoC_VRD_Current
+39:
+  <<: *CURRENT_DEFAULTS
+  path: /xyz/openbmc_project/sensors/current/DIMM_VRD1_Current
+40:
+  <<: *CURRENT_DEFAULTS
+  path: /xyz/openbmc_project/sensors/current/DIMM_VRD2_Current
+41:
+  <<: *CURRENT_DEFAULTS
+  path: /xyz/openbmc_project/sensors/current/RCA_VRD_Current
+42:
+  <<: *POWER_DEFAULTS
+  path: /xyz/openbmc_project/sensors/power/Core_VRD_Power_5s_Avg
+43:
+  <<: *POWER_DEFAULTS
+  path: /xyz/openbmc_project/sensors/power/SoC_IO_Power
+44:
+  <<: *POWER_DEFAULTS
+  path: /xyz/openbmc_project/sensors/power/DIMM_VRD1_Power
+45:
+  <<: *POWER_DEFAULTS
+  path: /xyz/openbmc_project/sensors/power/DIMM_VRD2_Power
