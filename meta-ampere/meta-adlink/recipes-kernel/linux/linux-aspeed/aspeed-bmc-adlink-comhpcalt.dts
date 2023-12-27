@@ -49,10 +49,35 @@
 		compatible = "gpio-leds";
 
 		heartbeat {
-			/* BMC_HB_LED */
-                        gpios = <&gpio ASPEED_GPIO(Y, 18) GPIO_ACTIVE_LOW>;
-                        linux,default-trigger = "timer";
+			  /* BMC_HB_LED */
+                          gpios = <&gpio ASPEED_GPIO(Y, 18) GPIO_ACTIVE_LOW>;
+                          linux,default-trigger = "timer";
 		};
+
+                identify {
+                          /* GPO_UID_LED */
+                          gpios = <&pca0 1 GPIO_ACTIVE_LOW>;
+                };
+
+                fault {
+                         /* GPO_SYS_RLED */
+                         gpios = <&pca0 3 GPIO_ACTIVE_LOW>;
+                };
+
+                sys-power {
+                        /* GPO_SYS_GLED */
+                        gpios = <&pca0 4 GPIO_ACTIVE_LOW>;
+                };
+
+                power {
+                        /* GPO_PWR_LED */
+                        gpios = <&pca0 5 GPIO_ACTIVE_LOW>;
+                };
+
+                fan-fail-led {
+                        /* FAN_FAIL_LED */
+                        gpios = <&pca0 7 GPIO_ACTIVE_LOW>;
+                };
 	};
 
 	iio-hwmon {
@@ -70,7 +95,6 @@
 		status = "okay";
 		m25p,fast-read;
 		label = "bmc";
-		/* spi-max-frequency = <50000000>; */
 #include "openbmc-flash-layout-64.dtsi"
 	};
 
@@ -91,7 +115,6 @@
 		status = "okay";
 		w25q;
 		label = "pnor-uefi";
-		/* spi-max-frequency = <12500000>; */
 	};
 };
 
@@ -157,24 +180,16 @@
                 #size-cells = <0>;
                 gpio-controller;
                 #gpio-cells = <2>;
-//                interrupt-parent = <&gpio>;
-//                interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
 
-                gpio-line-names = "bmc-ok", "identify",
-                                  "_identify-button", "fault",
-                                  "sys-power", "power",
-                                  "RS_UID_BUT_P", "fan-fail-led";
+                gpio-line-names = "bmc-ok", "",
+                                  "_identify-button", "",
+                                  "", "",
+                                  "RS_UID_BUT_P", "";
 
                 // I2C0_BMC_RDY_N
                 gpio@0 {
                         reg = <0>;
                         type = <PCA955X_TYPE_GPIO>;
-                };
-
-                // GPO_UID_LED
-                led@1 {
-                        reg = <1>;
-                        type = <PCA955X_TYPE_LED>;
                 };
 
                 // UID_BUT_P
@@ -183,21 +198,9 @@
                         type = <PCA955X_TYPE_GPIO>;
                 };
 
-                // GPO_SYS_RLED
-                led@3 {
-                        reg = <3>;
-                        type = <PCA955X_TYPE_LED>;
-                };
-
                 // GPO_SYS_GLED
                 led@4 {
                         reg = <4>;
-                        type = <PCA955X_TYPE_LED>;
-                };
-
-                // GFO_PWR_LED
-                led@5 {
-                        reg = <5>;
                         type = <PCA955X_TYPE_LED>;
                 };
 
@@ -205,12 +208,6 @@
                 gpio@6 {
                         reg = <6>;
                         type = <PCA955X_TYPE_GPIO>;
-                };
-
-                // FAN_FAIL_LED
-                led@7 {
-                        reg = <7>;
-                        type = <PCA955X_TYPE_LED>;
                 };
         };
 
