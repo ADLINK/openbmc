@@ -282,24 +282,23 @@
 };
 
 &i2c8 {
-	status = "okay";
+	status = "disabled";
 };
 
 &i2c9 {
-        status = "okay";
+        status = "disabled";
 };
 
 &i2c10 {
-        status = "okay";
+        status = "disabled";
 };
 
-
 &i2c11 {
-        status = "okay";
+        status = "disabled";
 };
 
 &i2c12 {
-        status = "okay";
+        status = "diabled";
 };
 
 &gfx {
