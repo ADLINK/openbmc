@@ -14,3 +14,6 @@ Known Issues
 - Fan control (/usr/share/swampd/config.json) should be tuned/calibrated for each system's fan configuration.
 - SOL doesn't work.
 - Inventory is missing many items.
+- BMC MAC address is the same across all systems.
+- Fan detection isn't working - missing fans are shown as having a high rpm.
+- The BMC MAC address is the same on all machines. Ideally should probably generate a unique address from the product or board serial number.
