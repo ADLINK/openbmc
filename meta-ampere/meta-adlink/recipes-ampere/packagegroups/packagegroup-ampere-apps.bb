@@ -24,22 +24,22 @@ RPROVIDES:${PN}-fans += "virtual-obmc-fan-mgmt"
 
 SUMMARY:${PN}-chassis = "Ampere Chassis"
 RDEPENDS:${PN}-chassis = " \
-        obmc-phosphor-buttons-signals \
-        obmc-phosphor-buttons-handler \
-        ampere-hostctrl \
         phosphor-hostlogger \
         phosphor-sel-logger \
         phosphor-logging \
-        ac01-boot-progress \
-        phosphor-post-code-manager \
-        phosphor-host-postd \
         phosphor-ipmi-ipmb \
         "
+
+# ampere-hostctrl
+# obmc-phosphor-buttons-signals
+# obmc-phosphor-buttons-handler
+# ac01-boot-progress
+# phosphor-post-code-manager
+# phosphor-host-postd
 
 SUMMARY:${PN}-system = "Ampere System"
 RDEPENDS:${PN}-system = " \
         smbios-mdr \
-        ac01-openocd \
         bootstrap-account \
         hostfw-revision-recover \
         "
