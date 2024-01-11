@@ -38,7 +38,7 @@ hostname file diffutils diffstat lz4 wget zstd rpcgen patch
 
 ### 2) Download the source
 ```
-git clone https://github.com/ampere-openbmc/openbmc.git
+git clone https://github.com/bcran/openbmc.git
 cd openbmc
 ```
 
@@ -46,6 +46,7 @@ cd openbmc
 Source the setup script and use one of the following for Ampere's platform:
 - mtjade
 - mtmitchell
+- comhpcalt
 
 For example:
 ```
@@ -59,16 +60,16 @@ bitbake obmc-phosphor-image
 
 On successful build, the BMC image will be located in
 ```
-tmp/work/<platform>-openbmc-linux-gnueabi/obmc-phosphor-image/1.0-r0/deploy-obmc-phosphor-image-image-complete/
+tmp/deploy/images/<platform>/
 ```
 
 as
 ```
-obmc-phosphor-image-<platform>.static.mtd
-obmc-phosphor-image-<platform>.static.mtd.tar
+obmc-phosphor-image-<platform>-<datetime>.static.mtd
+obmc-phosphor-image-<platform>-<datetime>.static.mtd.tar
 ```
 
-where `<platform>` = mtjade or mtmitchell
+where `<platform>` = mtjade, mtmitchell or comhpcalt
 
 ## Installing BMC firmware
 
