@@ -28,14 +28,13 @@ RDEPENDS:${PN}-chassis = " \
         phosphor-sel-logger \
         phosphor-logging \
         phosphor-ipmi-ipmb \
+        ampere-hostctrl \
+        obmc-phosphor-buttons-signals \
+        obmc-phosphor-buttons-handler \
+        ac01-boot-progress \
+        phosphor-post-code-manager \
+        phosphor-host-postd \
         "
-
-# ampere-hostctrl
-# obmc-phosphor-buttons-signals
-# obmc-phosphor-buttons-handler
-# ac01-boot-progress
-# phosphor-post-code-manager
-# phosphor-host-postd
 
 SUMMARY:${PN}-system = "Ampere System"
 RDEPENDS:${PN}-system = " \
