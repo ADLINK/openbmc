@@ -42,7 +42,7 @@ sudo dnf install git python3 gcc g++ gawk which bzip2 chrpath cpio \
 ### 2) Download the source
 
 ```sh
-git clone https://github.com/ampere-openbmc/openbmc
+git clone https://github.com/bcran/openbmc.git
 cd openbmc
 ```
 
@@ -93,15 +93,15 @@ bitbake obmc-phosphor-image
 
 On successful build, the BMC image will be located in
 ```
-tmp
+tmp/deploy/images/<platform>/
 ```
 as
 ```
-obmc-phosphor-image-<platform>.static.mtd
-obmc-phosphor-image-<platform>.static.mtd.tar
+obmc-phosphor-image-<platform>-<datetime>.static.mtd
+obmc-phosphor-image-<platform>-<datetime>.static.mtd.tar
 ```
 
-where `<platform>` = mtjade or mtmitchell-dcscm
+where `<platform>` = mtjade, mtmitchell-dcscm or comhpcalt
 
 Additional details can be found in the [docs](https://github.com/openbmc/docs)
 repository.
