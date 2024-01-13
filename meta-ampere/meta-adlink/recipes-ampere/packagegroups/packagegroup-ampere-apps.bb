@@ -28,6 +28,9 @@ RDEPENDS:${PN}-chassis = " \
         phosphor-sel-logger \
         phosphor-logging \
         phosphor-ipmi-ipmb \
+        "
+
+RDEPENDS:${PN}-chassis:append:flash64 = " \
         ampere-hostctrl \
         obmc-phosphor-buttons-signals \
         obmc-phosphor-buttons-handler \
