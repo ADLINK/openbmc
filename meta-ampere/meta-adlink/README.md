@@ -1,56 +1,43 @@
 OpenBMC Port to ADLINK COM-HPC-ALT Systems
 ==========================================
 
-This subtree contains the port of OpenBMC to ADLINK COM-HPC-ALT Ampere Altra based systems. These include:
+This subtree contains the port of OpenBMC to ADLINK COM-HPC-ALT Ampere
+Altra based systems. These include:
 
 - Ampere Altra Dev Kit
 - Ampere Altra Developer Platform
 - AVA Developer Platform
 
-The build defaults to a 64MB flash size.
-
 Known Issues
 ------------
-- SMPro (SoC/Core/DIMM) sensors occasionally return bogus results, for example temperature readings of 127 degC or 511 degC.
-- SMPro (SoC/Core/DIMM) sensors occasionally stop refreshing due to I2C I/O errors that persist until the machine is power cycled.
-- Fan control (/usr/share/swampd/config.json) should be tuned/calibrated for each system's fan configuration.
+- SMPro (SoC/Core/DIMM) sensors occasionally return bogus results, for
+  example temperature readings of 127 degC or 511 degC.
+- SMPro (SoC/Core/DIMM) sensors occasionally stop refreshing due to I2C
+  I/O errors that persist until the machine is power cycled.
+- Fan control (/usr/share/swampd/config.json) should be tuned/calibrated
+  for each system's fan configuration.
 - SOL doesn't work.
 - Inventory is missing many items.
 - Fan detection isn't working - missing fans are shown as having a high rpm.
-- The BMC MAC address is the same on all machines. Ideally should probably generate a unique address from the product or board serial number.
+- The BMC MAC address is the same on all machines. Ideally should probably
+  generate a unique address from the product or board serial number.
 
-Customizing build for a 32MB flash size
+Flash Sizes
 ----------------------------------------
 
-The default configuration fits in 64MB flash.
-To fit in 32MB (which is the size of the EEPROM ADLINK ships with
-their boards) several packages need to be removed, and kernel and
-utility builds need to be reduced in size.
+The default configuration builds a 32MB firmware image, which fits in the
+SPI-NOR EEPROMs that ADLINK ships with their systems. However, it's a tight
+fit and several potentially useful packages are removed, plus the filesystem
+doesn't have much space left.
 
-Key files to change if you have a 32MB flash are:
-
-meta-ampere/meta-adlink/conf/machine/comhpcalt.conf
-
-Remove:
-- lmsensors
-- ampere-ipmi-oem
-- phosphor-ipmi-blobs
-- phosphor-ipmi-blobs-binarystore
-- logger-systemd
-
-meta-ampere/meta-adlink/recipes-ampere/packagegroups/packagegroup-ampere-apps.bb
-
-Remove:
-- ampere-hostctrl
-- obmc-phosphor-buttons-signals
-- obmc-phosphor-buttons-handler
-- ac01-boot-progress
-- phosphor-post-code-manager
-- phosphor-host-postd
-
-Change the flash layout include lines in the devicetree source file:
-recipes-kernel/linux/linux-aspeed/aspeed-bmc-adlink-comhpcalt.dts
-
-Add or remove kernel options in recipes-kernel/linux/linux-aspeed/comhpcalt.cfg
-
-For a 128MB flash, again update the devicetree source and update the FLASH_SIZE in comhpcalt.conf
+If you have a 64MB (512Mb) or 128MB (1Gb) EEPROM, you can build firmware
+images for them by overriding the default `FLASH_SIZE`.
+After running `. setup comhpcalt` edit conf/local.conf (i.e.
+build/comhpcalt/conf/local.conf) and add a line:
+```
+FLASH_SIZE = "65536"
+```
+Or:
+```
+FLASH_SIZE = "131072"
+```

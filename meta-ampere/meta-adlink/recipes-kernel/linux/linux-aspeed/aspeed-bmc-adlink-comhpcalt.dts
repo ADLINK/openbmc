@@ -89,6 +89,8 @@
 	};
 };
 
+#include "aspeed-bmc-adlink-comhpcalt-flash.dtsi"
+
 &fmc {
 	status = "okay";
 	flash@0 {
