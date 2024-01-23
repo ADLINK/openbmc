@@ -71,6 +71,9 @@ function mtc_board_revision_detection() {
 }
 
 
+# Update the Ext Vref threshold in the Entity Manager config when the BMC reboot
+/usr/sbin/ampere_ext_vref_control.sh update-sensor-config
+
 #pre platform init function. implemented in platform_gpios_init.sh
 pre-platform-init
 
