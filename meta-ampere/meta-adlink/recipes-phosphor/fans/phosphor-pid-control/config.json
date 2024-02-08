@@ -112,45 +112,101 @@
     "zones" : [
         {
             "id": 1,
-            "failsafePercent": 90.0,
-            "minThermalOutput": 0.0,
-            "cycleTimeBaseMS": 1000,
-            "updateThermalsTimeMS": 1000,
+            "cycleIntervalTimeMS": 500.0,
+            "updateThermalsTimeMS": 1000.0,
+            "minThermalOutput": 30.0,
+            "failsafePercent": 80.0,
             "pids": [
-                {       
-                    "name": "fan1 2 4 5",
+                {
+                    "name": "FAN1",
                     "type": "fan",
-                    "inputs": [
-                        "FAN1",
-                        "FAN2",
-                        "FAN4",
-                        "FAN5"
-                    ],
-                    "setpoint": 0.0,
+                    "inputs": ["FAN1"],
+                    "setpoint": 30.0,
                     "pid": {
-                        "samplePeriod": 0.1,
+                        "samplePeriod": 1.0,
                         "proportionalCoeff": 0.0,
-                        "integralCoeff": 0.0,
                         "derivativeCoeff": 0.0,
-                        "feedFwdOffsetCoeff": 0.00,
-                        "feedFwdGainCoeff": 0.04,
+                        "integralCoeff": 0.0,
+                        "feedFwdOffsetCoeff": 0.0,
+                        "feedFwdGainCoeff": 1.0,
                         "integralLimit_min": 0.0,
-                        "integralLimit_max": 0.2,
-                        "outLim_min": 35.0,
+                        "integralLimit_max": 0.0,
+                        "outLim_min": 3.0,
                         "outLim_max": 100.0,
-                        "slewNeg": 2,
-                        "slewPos": 2
+                        "slewNeg": 0.0,
+                        "slewPos": 0.0
+                    }
+                },
+                {
+                    "name": "FAN2",
+                    "type": "fan",
+                    "inputs": ["FAN2"],
+                    "setpoint": 30.0,
+                    "pid": {
+                        "samplePeriod": 1.0,
+                        "proportionalCoeff": 0.0,
+                        "derivativeCoeff": 0.0,
+                        "integralCoeff": 0.0,
+                        "feedFwdOffsetCoeff": 0.0,
+                        "feedFwdGainCoeff": 1.0,
+                        "integralLimit_min": 0.0,
+                        "integralLimit_max": 0.0,
+                        "outLim_min": 3.0,
+                        "outLim_max": 100.0,
+                        "slewNeg": 0.0,
+                        "slewPos": 0.0
+                    }
+                },
+                {
+                    "name": "FAN4",
+                    "type": "fan",
+                    "inputs": ["FAN4"],
+                    "setpoint": 30.0,
+                    "pid": {
+                        "samplePeriod": 1.0,
+                        "proportionalCoeff": 0.0,
+                        "derivativeCoeff": 0.0,
+                        "integralCoeff": 0.0,
+                        "feedFwdOffsetCoeff": 0.0,
+                        "feedFwdGainCoeff": 1.0,
+                        "integralLimit_min": 0.0,
+                        "integralLimit_max": 0.0,
+                        "outLim_min": 3.0,
+                        "outLim_max": 100.0,
+                        "slewNeg": 0.0,
+                        "slewPos": 0.0
+                    }
+                },
+                {
+                    "name": "FAN5",
+                    "type": "fan",
+                    "inputs": ["FAN5"],
+                    "setpoint": 30.0,
+                    "pid": {
+                        "samplePeriod": 1.0,
+                        "proportionalCoeff": 0.0,
+                        "derivativeCoeff": 0.0,
+                        "integralCoeff": 0.0,
+                        "feedFwdOffsetCoeff": 0.0,
+                        "feedFwdGainCoeff": 1.0,
+                        "integralLimit_min": 0.0,
+                        "integralLimit_max": 0.0,
+                        "outLim_min": 3.0,
+                        "outLim_max": 100.0,
+                        "slewNeg": 0.0,
+                        "slewPos": 0.0
                     }
                 },
                 {       
-                    "name": "Temperature",
+                    "name": "SOC_TEMP",
                     "type": "stepwise",
-                    "inputs": [
-                        "SOC_TEMP"
-                     ],
-                    "setpoint": 0.0, 
+                    "inputs": ["SOC_TEMP"],
+                    "setpoint": 30.0,
+                    "failsafePercent": 80.0,
                     "pid": {
-                        "samplePeriod": 1,
+                        "samplePeriod": 1.0,
+                        "positiveHysteresis": 1.0,
+                        "negativeHysteresis": 1.0,
                         "isCeiling": false,
                         "reading": {
                             "0": 30.0,
