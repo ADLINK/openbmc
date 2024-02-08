@@ -12,7 +12,7 @@ SRC_URI += " \
             file://0006-ADC-Get-CPU-Present-as-creating-sensor.patch \
            "
 
-#PACKAGECONFIG[amperecpusensor] = "-Dampere-cpu=enabled, -Dampere-cpu=disabled"
+PACKAGECONFIG[amperecpusensor] = "-Dampere-cpu=enabled, -Dampere-cpu=disabled"
 SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'amperecpusensor', \
                                                'xyz.openbmc_project.amperecpusensor.service', \
                                                '', d)}"
