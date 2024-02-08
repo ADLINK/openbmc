@@ -23,7 +23,7 @@ Known Issues
   generate a unique address from the product or board serial number.
 
 Flash Sizes
-----------------------------------------
+-----------
 
 The default configuration builds a 32MB firmware image, which fits in the
 SPI-NOR EEPROMs that ADLINK ships with their systems. However, it's a tight
@@ -40,4 +40,23 @@ FLASH_SIZE = "65536"
 Or:
 ```
 FLASH_SIZE = "131072"
+```
+
+Building
+--------
+
+Run the following to build a firmware image:
+
+```
+. setup comhpcalt
+bitbake obmc-phosphor-image
+```
+
+If you're building on a system with a relatively large number of cores compared to memory (such as 8 cores and 32GB RAM)
+you'll probably want to reduce the default parallelism during the build to avoid running out of memory.
+
+Do this by adding the following to conf/local.conf after running `. setup comhpcalt` e.g.:
+```
+BB_NUMBER_THREADS = "2"
+PARALLEL_MAKE = "-j 2"
 ```
