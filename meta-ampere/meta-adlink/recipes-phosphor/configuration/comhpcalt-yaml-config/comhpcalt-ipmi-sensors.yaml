@@ -215,3 +215,111 @@
 45:
   <<: *POWER_DEFAULTS
   path: /xyz/openbmc_project/sensors/power/DIMM_VRD2_POWER
+46:
+  sensorType: 0x07
+  path: /system/board/COM_HPC_Carrier/FAN1
+  sensorReadingType: 0x6F
+  serviceInterface: xyz.openbmc_project.Inventory.Manager
+  readingType: assertion
+  mutability: Mutability::Read
+  interfaces:
+    xyz.openbmc_project.State.Decorator.OperationalStatus:
+      Functional:
+        Prereqs:
+          0x07:
+            assert: true
+            deassert: false
+            type: bool
+        Offsets:
+          0x08:
+            assert: false
+            deassert: true
+            type: bool
+    xyz.openbmc_project.Inventory.Item:
+      Present:
+        Offsets:
+          0x03:
+            assert: true
+            deassert: false
+            type: bool
+47:
+  sensorType: 0x07
+  path: /system/board/COM_HPC_Carrier/FAN2
+  sensorReadingType: 0x6F
+  serviceInterface: xyz.openbmc_project.Inventory.Manager
+  readingType: assertion
+  mutability: Mutability::Read
+  interfaces:
+    xyz.openbmc_project.State.Decorator.OperationalStatus:
+      Functional:
+        Prereqs:
+          0x07:
+            assert: true
+            deassert: false
+            type: bool
+        Offsets:
+          0x08:
+            assert: false
+            deassert: true
+            type: bool
+    xyz.openbmc_project.Inventory.Item:
+      Present:
+        Offsets:
+          0x04:
+            assert: true
+            deassert: false
+            type: bool
+48:
+  sensorType: 0x07
+  path: /system/board/COM_HPC_Carrier/FAN4
+  sensorReadingType: 0x6F
+  serviceInterface: xyz.openbmc_project.Inventory.Manager
+  readingType: assertion
+  mutability: Mutability::Read
+  interfaces:
+    xyz.openbmc_project.State.Decorator.OperationalStatus:
+      Functional:
+        Prereqs:
+          0x07:
+            assert: true
+            deassert: false
+            type: bool
+        Offsets:
+          0x08:
+            assert: false
+            deassert: true
+            type: bool
+    xyz.openbmc_project.Inventory.Item:
+      Present:
+        Offsets:
+          0x05:
+            assert: true
+            deassert: false
+            type: bool
+49:
+  sensorType: 0x07
+  path: /system/board/COM_HPC_Carrier/FAN5
+  sensorReadingType: 0x6F
+  serviceInterface: xyz.openbmc_project.Inventory.Manager
+  readingType: assertion
+  mutability: Mutability::Read
+  interfaces:
+    xyz.openbmc_project.State.Decorator.OperationalStatus:
+      Functional:
+        Prereqs:
+          0x07:
+            assert: true
+            deassert: false
+            type: bool
+        Offsets:
+          0x08:
+            assert: false
+            deassert: true
+            type: bool
+    xyz.openbmc_project.Inventory.Item:
+      Present:
+        Offsets:
+          0x06:
+            assert: true
+            deassert: false
+            type: bool
