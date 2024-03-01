@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Base of GPIO chip in /sys/class/gpio
-GPIO_CHIP0_BASE=792
+GPIO_CHIP0_BASE=512
 GPIO_CHIP1_BASE=780
 
-AST2500_GPIO_BASE=(
+AST2X00_GPIO_BASE=(
     "$GPIO_CHIP0_BASE"
-    "$GPIO_CHIP0_BASE"
+    "$GPIO_CHIP1_BASE"
 )
 
 function gpio_number() {
@@ -43,7 +43,7 @@ function gpio_name_set()
     else
         gpioid=$(echo "$str"|cut -c 9)
         offset=$(echo "$str"|cut -d " " -f 2)
-        gpioPin=$(("$offset" + ${AST2500_GPIO_BASE[$gpioid]}))
+        gpioPin=$(("$offset" + ${AST2X00_GPIO_BASE[$gpioid]}))
         gpio_configure_output "$gpioPin" "$2"
     fi
 }
@@ -57,7 +57,7 @@ function gpio_name_get()
     else
         offset=$(echo "$str"|cut -d " " -f 2)
         gpioid=$(echo "$str"|cut -c 9)
-        gpioPin=$(("$offset" + ${AST2500_GPIO_BASE[$gpioid]}))
+        gpioPin=$(("$offset" + ${AST2X00_GPIO_BASE[$gpioid]}))
         gpio_get_val "$gpioPin"
     fi
 }
@@ -71,7 +71,7 @@ function gpio_name_input()
     else
         gpioid=$(echo "$str"|cut -c 9)
         offset=$(echo "$str"|cut -d " " -f 2)
-        gpioPin=$(("$offset" + ${AST2500_GPIO_BASE[$gpioid]}))
+        gpioPin=$(("$offset" + ${AST2X00_GPIO_BASE[$gpioid]}))
         gpio_configure_input "$gpioPin"
     fi
 }
