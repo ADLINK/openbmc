@@ -10,7 +10,7 @@ SRC_URI += " \
 
 do_patch[postfuncs] += "copy_dts_file"
 
-do_patch:apend(){
+do_patch:append(){
         if [ "${FLASH_SIZE}" = "32768" ]; then
             FLASH_MB=32
         elif [ "${FLASH_SIZE}" = "65536" ]; then
