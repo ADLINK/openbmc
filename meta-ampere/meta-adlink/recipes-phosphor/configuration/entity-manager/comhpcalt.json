@@ -484,7 +484,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 5,
+            "PollRate": 11,
             "PowerState": "On",
             "Thresholds": [
                 {
@@ -510,7 +510,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 10,
+            "PollRate": 123,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -522,7 +522,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 10,
+            "PollRate": 65,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -534,7 +534,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 10,
+            "PollRate": 55,
             "PowerState": "On",
             "Thresholds": [
                 {
@@ -560,7 +560,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 5,
+            "PollRate": 34,
             "PowerState": "On",
             "Thresholds": [
                 {
@@ -586,7 +586,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 5,
+            "PollRate": 36,
             "PowerState": "On",
             "Thresholds": [
                 {
@@ -613,7 +613,7 @@
             "MaxValue": 256.0,
             "MinValue": -255.0,
             "PowerState": "On",
-            "PollRate": 5,
+            "PollRate": 37,
             "Thresholds": [
                 {
                     "Direction": "greater than",
@@ -638,7 +638,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 5,
+            "PollRate": 38,
             "PowerState": "On",
             "Thresholds": [
                 {
@@ -664,7 +664,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 5,
+            "PollRate": 39,
             "PowerState": "On",
             "Thresholds": [
                 {
@@ -690,7 +690,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 5,
+            "PollRate": 41,
             "PowerState": "On",
             "Thresholds": [
                 {
@@ -716,7 +716,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 10,
+            "PollRate": 63,
             "PowerState": "On",
             "Thresholds": [
                 {
@@ -743,7 +743,7 @@
             "MaxValue": 1023,
             "MinValue": 0,
             "PowerState": "On",
-            "PollRate": 5,
+            "PollRate": 60,
             "Type": "IpmbSensor"
         },
         {
@@ -755,7 +755,7 @@
             "MaxValue": 1023,
             "MinValue": 0,
             "PowerState": "On",
-            "PollRate": 5,
+            "PollRate": 60,
             "Type": "IpmbSensor"
         },
         {
@@ -766,7 +766,7 @@
             "SensorType": "power",
             "MaxValue": 1023,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 60,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -778,7 +778,7 @@
             "SensorType": "power",
             "MaxValue": 1023,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 60,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -790,7 +790,7 @@
             "SensorType": "power",
             "MaxValue": 255,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 60,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -802,7 +802,7 @@
             "SensorType": "power",
             "MaxValue": 255,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 60,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -814,7 +814,7 @@
             "SensorType": "power",
             "MaxValue": 255,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 60,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -826,7 +826,7 @@
             "SensorType": "power",
             "MaxValue": 255,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 60,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -838,7 +838,7 @@
             "SensorType": "power",
             "MaxValue": 1023,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 40,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -850,7 +850,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 15,
+            "PollRate": 120,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -862,7 +862,7 @@
             "SensorType": "temperature",
             "MaxValue": 256.0,
             "MinValue": -255.0,
-            "PollRate": 15,
+            "PollRate": 120,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -874,7 +874,7 @@
             "SensorType": "voltage",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 32,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -886,7 +886,7 @@
             "SensorType": "voltage",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 34,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -898,7 +898,7 @@
             "SensorType": "voltage",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 28,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -910,7 +910,7 @@
             "SensorType": "voltage",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 30,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -922,7 +922,7 @@
             "SensorType": "voltage",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 40,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -934,7 +934,7 @@
             "SensorType": "current",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 38,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -946,7 +946,7 @@
             "SensorType": "current",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 32,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -958,7 +958,7 @@
             "SensorType": "current",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 35,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -970,7 +970,7 @@
             "SensorType": "current",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 40,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -982,7 +982,7 @@
             "SensorType": "current",
             "MaxValue": 32767,
             "MinValue": 0,
-            "PollRate": 5,
+            "PollRate": 22,
             "PowerState": "On",
             "Type": "IpmbSensor"
         }
@@ -990,9 +990,6 @@
         "Name": "COM-HPC-ALT Carrier",
         "Probe": "xyz.openbmc_project.FruDevice({'PRODUCT_PRODUCT_NAME': 'COM-HPC-Carrier'})",
         "Type": "Board",
-        "xyz.openbmc_project.Common.UUID": {
-            "UUID": "$MULTIRECORD_UUID"
-        },
         "xyz.openbmc_project.Inventory.Decorator.Asset": {
             "Manufacturer": "$PRODUCT_MANUFACTURER",
             "Model": "$PRODUCT_PRODUCT_NAME $PRODUCT_VERSION",
