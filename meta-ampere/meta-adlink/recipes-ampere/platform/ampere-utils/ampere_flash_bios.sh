@@ -57,19 +57,13 @@ if [ ! -f "$IMAGE" ]; then
 	exit 1
 fi
 
-if [ -z "$2" ]; then
-       DEV_SEL="1"    # by default, select primary device
-else
-       DEV_SEL="$2"
-fi
-
 # Turn off the Host if it is currently ON
-chassisstate=$(obmcutil chassisstate | awk -F. '{print $NF}')
+chassisstate=$(ipmitool power status | awk '{print $4}')
 echo "--- Current Chassis State: $chassisstate"
-if [ "$chassisstate" == 'On' ];
+if [ "$chassisstate" == 'on' ];
 then
 	echo "--- Turning the Chassis off"
-	obmcutil chassisoff
+	ipmitool power off
 
 	# Wait 60s until Chassis is off
 	cnt=30
@@ -78,8 +72,8 @@ then
 		cnt=$((cnt - 1))
 		sleep 2
 		# Check if HOST was OFF
-		chassisstate_off=$(obmcutil chassisstate | awk -F. '{print $NF}')
-		if [ "$chassisstate_off" != 'On' ];
+		chassisstate_off=$(ipmitool power status | awk '{print $4}')
+		if [ "$chassisstate_off" != 'on' ];
 		then
 			break
 		fi
@@ -99,19 +93,6 @@ if ! gpioset $(gpiofind spi0-program-sel)=0; then
 	exit 1
 fi
 
-# Switch the host SPI bus (between primary and secondary)
-# 227 is spi0-backup-sel
-if [[ $DEV_SEL == 1 ]]; then
-	echo "Run update primary Host SPI-NOR"
-	gpioset $(gpiofind spi0-backup-sel)=0       # Primary SPI
-elif [[ $DEV_SEL == 2 ]]; then
-	echo "Run update secondary Host SPI-NOR"
-	gpioset $(gpiofind spi0-backup-sel)=1       # Second SPI
-else
-	echo "Please choose primary SPI (1) or second SPI (2)"
-	exit 0
-fi
-
 # Flash the firmware
 do_flash
 
@@ -122,9 +103,9 @@ if ! gpioset $(gpiofind spi0-program-sel)=1; then
 	exit 1
 fi
 
-if [ "$chassisstate" == 'On' ];
+if [ "$chassisstate" == 'on' ];
 then
 	sleep 5
 	echo "Turn on the Host"
-	obmcutil poweron
+	ipmitool power on
 fi
