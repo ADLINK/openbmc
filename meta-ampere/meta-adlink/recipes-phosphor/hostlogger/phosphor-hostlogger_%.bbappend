@@ -3,8 +3,6 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 SRC_URI:append = " \
                 file://ttyS0.conf \
                 file://ttyS1.conf \
-                file://ttyS2.conf \
-                file://ttyS3.conf \
                 "
 
 do_install:append() {
