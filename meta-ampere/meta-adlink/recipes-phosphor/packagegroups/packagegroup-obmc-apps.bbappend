@@ -4,7 +4,8 @@ RDEPENDS:${PN}-extras:append = " \
                                 phosphor-virtual-sensor \
                                 phosphor-misc-usb-ctrl \
                                 phosphor-gpio-monitor-monitor \
-                                phosphor-pid-control \
+                                phosphor-pid-control          \
+                                phosphor-software-manager-sync \
                                "
 
 RDEPENDS:${PN}-inventory:append = " \
