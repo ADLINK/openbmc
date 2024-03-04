@@ -11,27 +11,17 @@ Altra based systems. These include:
 Known Issues
 ------------
 - SMPro (SoC/Core/DIMM) sensors occasionally return bogus results, for
-  example temperature readings of 127 degC or 511 degC.
-- SMPro (SoC/Core/DIMM) sensors occasionally stop refreshing due to I2C
-  I/O errors that persist until the machine is power cycled.
-- Fan control (/usr/share/swampd/config.json) should be tuned/calibrated
-  for each system's fan configuration.
-- SOL doesn't work.
-- Inventory is missing many items.
+  example temperature readings of 127 degC or 511 degC. This appears to
+  happen when the host is rebooted.
+- SOL in the webui doesn't work; neither do the ssh SOL consoles.
 - Fan detection isn't working - missing fans are shown as having a high rpm.
-- The BMC MAC address is the same on all machines. Ideally should probably
-  generate a unique address from the product or board serial number.
 
 Flash Sizes
 -----------
 
-The default configuration builds a 32MB firmware image, which fits in the
-SPI-NOR EEPROMs that ADLINK ships with their systems. However, it's a tight
-fit and several potentially useful packages are removed, plus the filesystem
-doesn't have much space left.
-
 If you have a 64MB (512Mb) or 128MB (1Gb) EEPROM, you can build firmware
-images for them by overriding the default `FLASH_SIZE`.
+images for them by setting `FLASH_SIZE`.
+
 After running `. setup comhpcalt` edit conf/local.conf (i.e.
 build/comhpcalt/conf/local.conf) and add a line:
 ```
@@ -41,6 +31,9 @@ Or:
 ```
 FLASH_SIZE = "131072"
 ```
+
+The default FLASH_SIZE is 32MB, but that's unsupported because there's
+not enough space left for the packages we need.
 
 Building
 --------
