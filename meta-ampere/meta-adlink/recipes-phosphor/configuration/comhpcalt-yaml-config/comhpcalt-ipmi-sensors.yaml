@@ -1,26 +1,96 @@
 1: &TEMP_DEFAULTS
+    entityID: 0x7
+    entityInstance: 1
+    sensorType: 1
+    path: /xyz/openbmc_project/sensors/temperature/FRONT_TEMP
+    sensorReadingType: 1
+    multiplierM: 1
+    offsetB: 0
     bExp: 0
+    rExp: 0
+    readingType: readingData
+    sensorNamePattern: nameLeaf
+    serviceInterface: org.freedesktop.DBus.Properties
+    unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
+    mutability: Mutability::Read
     interfaces:
         xyz.openbmc_project.Sensor.Value:
             Value:
                 Offsets:
-                    255:
+                    0xFF:
                         type: double
-    multiplierM: 1
-    mutability: Mutability::Read
-    offsetB: 0
-    path: /xyz/openbmc_project/sensors/temperature/FRONT_TEMP
-    rExp: 0
-    readingType: readingData
-    sensorNamePattern: nameLeaf
-    sensorReadingType: 1
-    sensorType: 1
-    serviceInterface: org.freedesktop.DBus.Properties
-    unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
 2:
     <<: *TEMP_DEFAULTS
     path: /xyz/openbmc_project/sensors/temperature/REAR_TEMP
-3: &FAN_DEFAULTS
+    entityInstance: 2
+3:
+    <<: *TEMP_DEFAULTS
+    entityID: 3
+    entityInstance: 1
+    path: /xyz/openbmc_project/sensors/temperature/SOC_TEMP
+4:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/SOC_VRD_TEMP_MAX
+    entityID: 3
+    entityInstance: 2
+5:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/DIMM_VRD_TEMP_MAX
+    entityID: 32
+    entityInstance: 1
+6:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/CORE_VRD_TEMP_MAX
+    entityID: 3
+    entityInstance: 3
+7:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/DIMM1_TEMP
+    entityID: 32
+    entityInstance: 2
+8:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/DIMM2_TEMP
+    entityID: 32
+    entityInstance: 3
+9:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/DIMM3_TEMP
+    entityID: 32
+    entityInstance: 4
+10:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/DIMM4_TEMP
+    entityID: 32
+    entityInstance: 5
+11:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/DIMM5_TEMP
+    entityID: 32
+    entityInstance: 6
+12:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/DIMM6_TEMP
+    entityID: 32
+    entityInstance: 7
+13:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/RCA_VRD_TEMP_MAX
+    entityID: 20
+    entityInstance: 1
+14:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/MEM_HOT_THRESHOLD
+    entityID: 32
+    entityInstance: 8
+15:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/SOC_VR_HOT_THRESHOLD
+    entityID: 3
+    entityInstance: 4
+16: &FAN_DEFAULTS
+    entityID: 29
+    entityInstance: 1
     sensorType: 4
     path: /xyz/openbmc_project/sensors/fan_tach/FAN1
     sensorReadingType: 1
@@ -38,288 +108,194 @@
           Offsets:
             0x0:
               type: double
-4:
+17:
     <<: *FAN_DEFAULTS
     path: /xyz/openbmc_project/sensors/fan_tach/FAN2
-5:
+    entityInstance: 2
+18:
     <<: *FAN_DEFAULTS
     path: /xyz/openbmc_project/sensors/fan_tach/FAN4
-6:
+    entityInstance: 3
+19:
     <<: *FAN_DEFAULTS
     path: /xyz/openbmc_project/sensors/fan_tach/FAN5
-7: &VOLTAGE_DEFAULTS
-  bExp: 0
-  interfaces:
-    xyz.openbmc_project.Sensor.Value:
-      Value:
-        Offsets:
-          255:
-            type: double
-  multiplierM: 1
-  mutability: Mutability::Read
-  path: /xyz/openbmc_project/sensors/voltage/P2V5_RT
-  offsetB: 0
-  rExp: 0
-  readingType: readingData
-  scale: 0
-  sensorNamePattern: nameLeaf
-  sensorReadingType: 1
-  sensorType: 2
-  serviceInterface: org.freedesktop.DBus.Properties
-  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
-8:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/P12V_MOD
-9:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/VCC_5V_SB
-10:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/P1V15_BMC_AUX
-11:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/P5V_SB
-12:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/P5V
-13:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/P3V3
-14:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/P3V3_SB
-15:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/P1V8
-16:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/P1V8_SB
-17:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/VBAT
-18:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/SOC_TEMP
-19:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/SOC_VRD_TEMP_MAX
-20:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/DIMM_VRD_TEMP_MAX
+    entityInstance: 4
+20: &VOLTAGE_DEFAULTS
+    entityID: 10
+    entityInstance: 1
+    sensorType: 2
+    path: /xyz/openbmc_project/sensors/voltage/P2V5_RT
+    sensorReadingType: 1
+    multiplierM: 5
+    offsetB: 0
+    bExp: 0
+    rExp: -3
+    readingType: readingData
+    sensorNamePattern: nameLeaf
+    serviceInterface: org.freedesktop.DBus.Properties
+    unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+    mutability: Mutability::Read
+    interfaces:
+        xyz.openbmc_project.Sensor.Value:
+            Value:
+                Offsets:
+                    0xFF:
+                        type: double
 21:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/CORE_VRD_TEMP_MAX
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/P12V_MOD
+    entityInstance: 2
+    multiplierM: 60
 22:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/DIMM1_TEMP
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/VCC_5V_SB
+    entityInstance: 3
+    multiplierM: 30
 23:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/DIMM2_TEMP
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/P1V15_BMC_AUX
+    entityInstance: 4
+    multiplierM: 8
 24:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/DIMM3_TEMP
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/P5V_SB
+    entityInstance: 5
+    multiplierM: 30
 25:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/DIMM4_TEMP
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/P5V
+    entityInstance: 6
+    multiplierM: 30
 26:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/DIMM5_TEMP
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/P3V3
+    entityInstance: 7
+    multiplierM: 15
 27:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/DIMM6_TEMP
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/P3V3_SB
+    entityInstance: 8
+    multiplierM: 15
 28:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/RCA_VRD_TEMP_MAX
-29: &POWER_DEFAULTS
-  bExp: 0
-  interfaces:
-    xyz.openbmc_project.Sensor.Value:
-      Value:
-        Offsets:
-          255:
-            type: double
-  multiplierM: 1
-  mutability: Mutability::Read
-  path: /xyz/openbmc_project/sensors/power/RCA_VRD_POWER
-  offsetB: 0
-  rExp: 0
-  readingType: readingData
-  scale: 0
-  sensorNamePattern: nameLeaf
-  sensorReadingType: 1
-  sensorType: 2
-  serviceInterface: org.freedesktop.DBus.Properties
-  unit: xyz.openbmc_project.Sensor.Value.Unit.Watts
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/P1V8
+    entityInstance: 9
+    multiplierM: 10
+29:
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/P1V8_SB
+    entityInstance: 10
+    multiplierM: 10
 30:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/MEM_HOT_THRESHOLD
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/VBAT
+    entityInstance: 11
+    multiplierM: 15
 31:
-  <<: *TEMP_DEFAULTS
-  path: /xyz/openbmc_project/sensors/temperature/SOC_VR_HOT_THRESHOLD
-32: 
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/CORE_VRD_VOLTAGE
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/CORE_VRD_VOLTAGE
+    entityID: 3
+    entityInstance: 5
+32:
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/SOC_VRD_VOLTAGE
+    entityID: 3
+    entityInstance: 6
 33:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/SOC_VRD_VOLTAGE
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/DIMM_VRD1_VOLTAGE
+    entityID: 32
+    entityInstance: 9
 34:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/DIMM_VRD1_VOLTAGE
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/DIMM_VRD2_VOLTAGE
+    entityID: 32
+    entityInstance: 10
 35:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/DIMM_VRD2_VOLTAGE
-36:
-  <<: *VOLTAGE_DEFAULTS
-  path: /xyz/openbmc_project/sensors/voltage/RCA_VRD_VOLTAGE
-37: &CURRENT_DEFAULTS
-  bExp: 0
-  interfaces:
-    xyz.openbmc_project.Sensor.Value:
-      Value:
-        Offsets:
-          255:
-            type: double
-  multiplierM: 1
-  mutability: Mutability::Read
-  path: /xyz/openbmc_project/sensors/current/CORE_VRD_CURRENT
-  offsetB: 0
-  rExp: 0
-  readingType: readingData
-  scale: 0
-  sensorNamePattern: nameLeaf
-  sensorReadingType: 1
-  sensorType: 2
-  serviceInterface: org.freedesktop.DBus.Properties
-  unit: xyz.openbmc_project.Sensor.Value.Unit.Amperes
+    <<: *VOLTAGE_DEFAULTS
+    path: /xyz/openbmc_project/sensors/voltage/RCA_VRD_VOLTAGE
+    entityID: 20
+    entityInstance: 2
+36: &POWER_DEFAULTS
+    entityID: 20
+    entityInstance: 3
+    sensorType: 8
+    path: /xyz/openbmc_project/sensors/power/RCA_VRD_POWER
+    sensorReadingType: 1
+    multiplierM: 0x50
+    offsetB: 0
+    bExp: 0
+    rExp: -2
+    readingType: readingData
+    sensorNamePattern: nameLeaf
+    serviceInterface: org.freedesktop.DBus.Properties
+    unit: xyz.openbmc_project.Sensor.Value.Unit.Watts
+    mutability: Mutability::Read
+    interfaces:
+        xyz.openbmc_project.Sensor.Value:
+            Value:
+                Offsets:
+                    0xFF:
+                        type: double
+37:
+    <<: *POWER_DEFAULTS
+    path: /xyz/openbmc_project/sensors/power/CORE_VRD_POWER_5s_AVG
+    entityID: 3
+    entityInstance: 7
 38:
-  <<: *CURRENT_DEFAULTS
-  path: /xyz/openbmc_project/sensors/current/SOC_VRD_CURRENT
+    <<: *POWER_DEFAULTS
+    path: /xyz/openbmc_project/sensors/power/SOC_IO_POWER
+    entityID: 3
+    entityInstance: 8
 39:
-  <<: *CURRENT_DEFAULTS
-  path: /xyz/openbmc_project/sensors/current/DIMM_VRD1_CURRENT
+    <<: *POWER_DEFAULTS
+    path: /xyz/openbmc_project/sensors/power/DIMM_VRD1_POWER
+    entityID: 32
+    entityInstance: 11
 40:
-  <<: *CURRENT_DEFAULTS
-  path: /xyz/openbmc_project/sensors/current/DIMM_VRD2_CURRENT
-41:
-  <<: *CURRENT_DEFAULTS
-  path: /xyz/openbmc_project/sensors/current/RCA_VRD_CURRENT
+    <<: *POWER_DEFAULTS
+    path: /xyz/openbmc_project/sensors/power/DIMM_VRD2_POWER
+    entityID: 32
+    entityInstance: 12
+41: &CURRENT_DEFAULTS
+    bExp: 0
+    interfaces:
+        xyz.openbmc_project.Sensor.Value:
+            Value:
+                Offsets:
+                    0xFF:
+                        type: double
+    multiplierM: 0x50
+    mutability: Mutability::Read
+    path: /xyz/openbmc_project/sensors/current/CORE_VRD_CURRENT
+    offsetB: 0
+    rExp: -3
+    readingType: readingData
+    scale: 0
+    sensorNamePattern: nameLeaf
+    sensorReadingType: 1
+    sensorType: 3
+    entityID: 3
+    entityInstance: 9
+    serviceInterface: org.freedesktop.DBus.Properties
+    unit: xyz.openbmc_project.Sensor.Value.Unit.Amperes
 42:
-  <<: *POWER_DEFAULTS
-  path: /xyz/openbmc_project/sensors/power/CORE_VRD_POWER_5s_AVG
+    <<: *CURRENT_DEFAULTS
+    path: /xyz/openbmc_project/sensors/current/SOC_VRD_CURRENT
+    entityID: 3
+    entityInstance: 10
 43:
-  <<: *POWER_DEFAULTS
-  path: /xyz/openbmc_project/sensors/power/SOC_IO_POWER
+    <<: *CURRENT_DEFAULTS
+    path: /xyz/openbmc_project/sensors/current/DIMM_VRD1_CURRENT
+    entityID: 32
+    entityInstance: 13
 44:
-  <<: *POWER_DEFAULTS
-  path: /xyz/openbmc_project/sensors/power/DIMM_VRD1_POWER
+    <<: *CURRENT_DEFAULTS
+    path: /xyz/openbmc_project/sensors/current/DIMM_VRD2_CURRENT
+    entityID: 32
+    entityInstance: 14
 45:
-  <<: *POWER_DEFAULTS
-  path: /xyz/openbmc_project/sensors/power/DIMM_VRD2_POWER
-46:
-  sensorType: 0x07
-  path: /system/board/COM_HPC_Carrier/FAN1
-  sensorReadingType: 0x6F
-  serviceInterface: xyz.openbmc_project.Inventory.Manager
-  readingType: assertion
-  mutability: Mutability::Read
-  interfaces:
-    xyz.openbmc_project.State.Decorator.OperationalStatus:
-      Functional:
-        Prereqs:
-          0x07:
-            assert: true
-            deassert: false
-            type: bool
-        Offsets:
-          0x08:
-            assert: false
-            deassert: true
-            type: bool
-    xyz.openbmc_project.Inventory.Item:
-      Present:
-        Offsets:
-          0x03:
-            assert: true
-            deassert: false
-            type: bool
-47:
-  sensorType: 0x07
-  path: /system/board/COM_HPC_Carrier/FAN2
-  sensorReadingType: 0x6F
-  serviceInterface: xyz.openbmc_project.Inventory.Manager
-  readingType: assertion
-  mutability: Mutability::Read
-  interfaces:
-    xyz.openbmc_project.State.Decorator.OperationalStatus:
-      Functional:
-        Prereqs:
-          0x07:
-            assert: true
-            deassert: false
-            type: bool
-        Offsets:
-          0x08:
-            assert: false
-            deassert: true
-            type: bool
-    xyz.openbmc_project.Inventory.Item:
-      Present:
-        Offsets:
-          0x04:
-            assert: true
-            deassert: false
-            type: bool
-48:
-  sensorType: 0x07
-  path: /system/board/COM_HPC_Carrier/FAN4
-  sensorReadingType: 0x6F
-  serviceInterface: xyz.openbmc_project.Inventory.Manager
-  readingType: assertion
-  mutability: Mutability::Read
-  interfaces:
-    xyz.openbmc_project.State.Decorator.OperationalStatus:
-      Functional:
-        Prereqs:
-          0x07:
-            assert: true
-            deassert: false
-            type: bool
-        Offsets:
-          0x08:
-            assert: false
-            deassert: true
-            type: bool
-    xyz.openbmc_project.Inventory.Item:
-      Present:
-        Offsets:
-          0x05:
-            assert: true
-            deassert: false
-            type: bool
-49:
-  sensorType: 0x07
-  path: /system/board/COM_HPC_Carrier/FAN5
-  sensorReadingType: 0x6F
-  serviceInterface: xyz.openbmc_project.Inventory.Manager
-  readingType: assertion
-  mutability: Mutability::Read
-  interfaces:
-    xyz.openbmc_project.State.Decorator.OperationalStatus:
-      Functional:
-        Prereqs:
-          0x07:
-            assert: true
-            deassert: false
-            type: bool
-        Offsets:
-          0x08:
-            assert: false
-            deassert: true
-            type: bool
-    xyz.openbmc_project.Inventory.Item:
-      Present:
-        Offsets:
-          0x06:
-            assert: true
-            deassert: false
-            type: bool
+    <<: *CURRENT_DEFAULTS
+    path: /xyz/openbmc_project/sensors/current/RCA_VRD_CURRENT
+    entityID: 20
+    entityInstance: 4
