@@ -89,22 +89,22 @@
 	};
 };
 
-#include "aspeed-bmc-adlink-comhpcalt-flash.dtsi"
-
 &fmc {
 	status = "okay";
 	flash@0 {
 		status = "okay";
 		m25p,fast-read;
 		label = "bmc";
-#include "openbmc-flash-layout-64.dtsi"
+                spi-max-frequency = <133000000>;
+#include "aspeed-bmc-adlink-comhpcalt-flash.dtsi"
 	};
 
 	flash@1 {
 		status = "okay";
 		m25p,fast-read;
 		label = "alt-bmc";
-#include "openbmc-flash-layout-64.dtsi"
+                spi-max-frequency = <133000000>;
+#include "aspeed-bmc-adlink-comhpcalt-flash-alt.dtsi"
 	};
 };
 
@@ -173,9 +173,7 @@
 };
 
 &mac1 {
-	status = "okay";
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_rgmii2_default &pinctrl_mdio2_default>;
+	status = "disabled";
 };
 
 &i2c0 {
