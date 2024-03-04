@@ -1,6 +1,6 @@
 0:
-  /system/board/COM_HPC_Carrier:
-    entityID: 7
+  /xyz.openbmc_project.FruDevice/COM_HPC_Carrier:
+    entityID: 1
     entityInstance: 1
     interfaces:
       xyz.openbmc_project.Inventory.Decorator.Asset:
