@@ -415,7 +415,7 @@
             {
                 "Address": "0x48",
                 "Bus": 7,
-                "Name": "FRONT_TEMP",
+                "Name": "REAR_TEMP",
                 "Thresholds": [
                     {
                         "Direction": "greater than",
@@ -447,7 +447,7 @@
             {
                 "Address": "0x49",
                 "Bus": 7,
-                "Name": "REAR_TEMP",
+                "Name": "FRONT_TEMP",
                 "Thresholds": [
                     {
                         "Direction": "greater than",
@@ -788,9 +788,10 @@
             "HostSMbusIndex": 0,
             "Name": "CALC_P0_1",
             "SensorType": "power",
-            "MaxValue": 255,
+            "MaxValue": 1023,
             "MinValue": 0,
             "PollRate": 60,
+            "ScaleFactor": 0.001,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -800,9 +801,10 @@
             "HostSMbusIndex": 0,
             "Name": "CALC_P1_1",
             "SensorType": "power",
-            "MaxValue": 255,
+            "MaxValue": 1023,
             "MinValue": 0,
             "PollRate": 60,
+            "ScaleFactor": 0.001,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -812,9 +814,10 @@
             "HostSMbusIndex": 0,
             "Name": "CALC_P2_1",
             "SensorType": "power",
-            "MaxValue": 255,
+            "MaxValue": 1023,
             "MinValue": 0,
             "PollRate": 60,
+            "ScaleFactor": 0.001,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
@@ -824,9 +827,10 @@
             "HostSMbusIndex": 0,
             "Name": "CALC_P3_1",
             "SensorType": "power",
-            "MaxValue": 255,
+            "MaxValue": 1023,
             "MinValue": 0,
             "PollRate": 60,
+            "ScaleFactor": 0.001,
             "PowerState": "On",
             "Type": "IpmbSensor"
         },
