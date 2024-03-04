@@ -30,7 +30,7 @@ RDEPENDS:${PN}-chassis = " \
         phosphor-ipmi-ipmb \
         "
 
-RDEPENDS:${PN}-chassis:append:flash64 = " \
+RDEPENDS:${PN}-chassis:append:flash-65536:flash-131072 = " \
         ampere-hostctrl \
         obmc-phosphor-buttons-signals \
         obmc-phosphor-buttons-handler \
