@@ -23,4 +23,4 @@ FILES:${PN}-dev = " \
                    ${datadir}/${BPN}/ipmi-fru-read.yaml \
                   "
 
-ALLOW_EMPTY:${PN} = "1"
+ALLOW_EMPTY:${PN} = "0"
