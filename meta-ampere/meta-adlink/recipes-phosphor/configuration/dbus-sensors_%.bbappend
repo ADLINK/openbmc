@@ -1,4 +1,10 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-PACKAGECONFIG:append = " ipmbsensor"
+PACKAGECONFIG = "   \
+    adcsensor       \
+    fansensor       \
+    hwmontempsensor \
+    ipmbsensor      \
+    external        \
+    "
 
