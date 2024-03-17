@@ -42,7 +42,7 @@ do_flash () {
 	fi
 
 	echo "--- Flashing firmware to @/dev/$HOST_MTD"
-	flashcp -v "$IMAGE" /dev/"$HOST_MTD"
+	flashcp.mtd-utils -p -v "$IMAGE" /dev/"$HOST_MTD"
 }
 
 
