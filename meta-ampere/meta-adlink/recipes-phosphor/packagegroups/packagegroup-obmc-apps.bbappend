@@ -6,6 +6,7 @@ RDEPENDS:${PN}-extras:append = " \
                                 phosphor-gpio-monitor-monitor \
                                 phosphor-pid-control          \
                                 phosphor-software-manager-sync \
+                                mtd-utils \
                                "
 
 RDEPENDS:${PN}-inventory:append = " \
