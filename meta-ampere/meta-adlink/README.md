@@ -19,21 +19,16 @@ Known Issues
 Flash Sizes
 -----------
 
-If you have a 64MB (512Mb) or 128MB (1Gb) EEPROM, you can build firmware
-images for them by setting `FLASH_SIZE`.
+If you have a 32MB (256Mb), 64MB (512Mb) or 128MB (1Gb) EEPROM, you can
+build firmware images for them by setting `FLASH_SIZE`:
 
 After running `. setup comhpcalt` edit conf/local.conf (i.e.
-build/comhpcalt/conf/local.conf) and add a line:
-```
-FLASH_SIZE = "65536"
-```
-Or:
-```
-FLASH_SIZE = "131072"
-```
+build/comhpcalt/conf/local.conf) and comment/uncomment the `FLASH_SIZE`
+lines as needed.
 
-The default FLASH_SIZE is 32MB, but that's unsupported because there's
-not enough space left for the packages we need.
+For building a 32MB firmware image, uncomment the `FLASH_` lines under
+"Reformat SPI flash layout to 32MB" otherwise you'll get a build error
+saying there's not enough space.
 
 Building
 --------
