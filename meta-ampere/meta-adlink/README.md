@@ -26,10 +26,6 @@ After running `. setup comhpcalt` edit conf/local.conf (i.e.
 build/comhpcalt/conf/local.conf) and comment/uncomment the `FLASH_SIZE`
 lines as needed.
 
-For building a 32MB firmware image, uncomment the `FLASH_` lines under
-"Reformat SPI flash layout to 32MB" otherwise you'll get a build error
-saying there's not enough space.
-
 Building
 --------
 
