@@ -8,138 +8,148 @@
 #include <dt-bindings/i2c/i2c.h>
 
 / {
-	model = "ADLINK COM-HPC-ALT BMC";
-	compatible = "ampere,comhpcalt-bmc", "aspeed,ast2500";
+    model = "ADLINK COM-HPC-ALT BMC";
+    compatible = "ampere,comhpcalt-bmc", "aspeed,ast2500";
 
-	chosen {
-		stdout-path = &uart5;
-		bootargs = "console=ttyS4,115200 earlycon";
-	};
+    chosen {
+        stdout-path = &uart5;
+        bootargs = "console=ttyS4,115200 earlycon";
+    };
 
-	memory@80000000 {
-		reg = <0x80000000 0x20000000>;
-	};
+    memory@80000000 {
+        reg = <0x80000000 0x20000000>;
+    };
 
-	reserved-memory {
-		#address-cells = <1>;
-		#size-cells = <1>;
-		ranges;
+    reserved-memory {
+        #address-cells = <1>;
+        #size-cells = <1>;
+        ranges;
 
-		vga_memory: framebuffer@9f000000 {
-			no-map;
-			reg = <0x9f000000 0x01000000>; /* 16M */
-		};
+        vga_memory: framebuffer@9f000000 {
+            no-map;
+            reg = <0x9f000000 0x01000000>; /* 16M */
+        };
 
-		gfx_memory: framebuffer {
-			size = <0x01000000>;
-			alignment = <0x01000000>;
-			compatible = "shared-dma-pool";
-			reusable;
-		};
+        gfx_memory: framebuffer {
+            size = <0x01000000>;
+            alignment = <0x01000000>;
+            compatible = "shared-dma-pool";
+            reusable;
+        };
 
-		video_engine_memory: jpegbuffer {
-			size = <0x02000000>;	/* 32M */
-			alignment = <0x01000000>;
-			compatible = "shared-dma-pool";
-			reusable;
-		};
-	};
+        video_engine_memory: jpegbuffer {
+            size = <0x02000000>;    /* 32M */
+            alignment = <0x01000000>;
+            compatible = "shared-dma-pool";
+            reusable;
+        };
+    };
 
-	leds {
-		compatible = "gpio-leds";
+    leds {
+        compatible = "gpio-leds";
 
-		heartbeat {
-			  /* BMC_HB_LED */
-                          gpios = <&gpio ASPEED_GPIO(Y, 18) GPIO_ACTIVE_LOW>;
-                          linux,default-trigger = "timer";
-		};
+        heartbeat {
+              /* BMC_HB_LED */
+              gpios = <&gpio ASPEED_GPIO(Y, 18) GPIO_ACTIVE_LOW>;
+              linux,default-trigger = "timer";
+        };
 
-                identify {
-                          /* GPO_UID_LED */
-                          gpios = <&pca0 1 GPIO_ACTIVE_LOW>;
-                };
+        identify {
+            /* GPO_UID_LED */
+            gpios = <&pca0 1 GPIO_ACTIVE_LOW>;
+        };
 
-                fault {
-                         /* GPO_SYS_RLED */
-                         gpios = <&pca0 3 GPIO_ACTIVE_LOW>;
-                };
+        fault {
+            /* GPO_SYS_RLED */
+            gpios = <&pca0 3 GPIO_ACTIVE_LOW>;
+        };
 
-                sys-power {
-                        /* GPO_SYS_GLED */
-                        gpios = <&pca0 4 GPIO_ACTIVE_LOW>;
-                };
+        sys-power {
+            /* GPO_SYS_GLED */
+            gpios = <&pca0 4 GPIO_ACTIVE_LOW>;
+        };
 
-                power {
-                        /* GPO_PWR_LED */
-                        gpios = <&pca0 5 GPIO_ACTIVE_LOW>;
-                };
+        power {
+            /* GPO_PWR_LED */
+            gpios = <&pca0 5 GPIO_ACTIVE_LOW>;
+        };
 
-                fan-fail-led {
-                        /* FAN_FAIL_LED */
-                        gpios = <&pca0 7 GPIO_ACTIVE_LOW>;
-                };
-	};
+        fan-fail-led {
+            /* FAN_FAIL_LED */
+            gpios = <&pca0 7 GPIO_ACTIVE_LOW>;
+        };
+    };
 
-	iio-hwmon {
-		compatible = "iio-hwmon";
+    iio-hwmon {
+        compatible = "iio-hwmon";
 
-                io-channels = <&adc 0>, <&adc 1>, <&adc 2>, <&adc 3>, <&adc 4>,
-                        <&adc 5>, <&adc 6>, <&adc 7>, <&adc 8>, <&adc 9>,
-                        <&adc 10>, <&adc 11>, <&adc 12>, <&adc 13>;
-	};
+        io-channels = <&adc 0>, <&adc 1>, <&adc 2>, <&adc 3>, <&adc 4>,
+                      <&adc 5>, <&adc 6>, <&adc 7>, <&adc 8>, <&adc 9>,
+                      <&adc 10>, <&adc 11>, <&adc 12>, <&adc 13>;
+    };
 };
 
 &fmc {
-	status = "okay";
-	flash@0 {
-		status = "okay";
-		m25p,fast-read;
-		label = "bmc";
-                spi-max-frequency = <133000000>;
+    status = "okay";
+    flash@0 {
+        status = "okay";
+        m25p,fast-read;
+        label = "bmc";
+        spi-max-frequency = <133000000>;
 #include "aspeed-bmc-adlink-comhpcalt-flash.dtsi"
-	};
+        };
 
-	flash@1 {
-		status = "okay";
-		m25p,fast-read;
-		label = "alt-bmc";
-                spi-max-frequency = <133000000>;
+        flash@1 {
+        status = "okay";
+        m25p,fast-read;
+        label = "alt-bmc";
+        spi-max-frequency = <133000000>;
 #include "aspeed-bmc-adlink-comhpcalt-flash-alt.dtsi"
-	};
+    };
 };
 
 &spi1 {
-	status = "okay";
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_spi1_default>;
+        status = "okay";
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_spi1_default>;
 
-	flash@0 {
-		status = "okay";
-		w25q;
-		label = "pnor-uefi";
-	};
+        flash@0 {
+                status = "okay";
+                w25q,fast-read;
+                label = "pnor";
+                /* spi-max-frequency = <100000000>; */
+                partitions {
+                        compatible = "fixed-partitions";
+                        #address-cells = <1>;
+                        #size-cells = <1>;
+                        uefi@400000 {
+                                reg = <0x400000 0x1C00000>;
+                                label = "pnor-uefi";
+                        };
+                };
+        };
 };
 
 &uart1 {
         status = "okay";
         pinctrl-names = "default";
         pinctrl-0 = <&pinctrl_txd1_default
-                &pinctrl_rxd1_default
-                &pinctrl_nrts1_default
-                &pinctrl_ndtr1_default
-                &pinctrl_ndsr1_default
-                &pinctrl_ncts1_default
-                &pinctrl_ndcd1_default
-                &pinctrl_nri1_default>;
+                     &pinctrl_rxd1_default
+                     &pinctrl_nrts1_default
+                     &pinctrl_ndtr1_default
+                     &pinctrl_ndsr1_default
+                     &pinctrl_ncts1_default
+                     &pinctrl_ndcd1_default
+                     &pinctrl_nri1_default>;
 };
 
 &uart2 {
         status = "okay";
         pinctrl-names = "default";
         pinctrl-0 = <&pinctrl_txd2_default
-                         &pinctrl_rxd2_default
-                         &pinctrl_ncts2_default
-                         &pinctrl_nrts2_default>;
+                     &pinctrl_rxd2_default
+                     &pinctrl_ncts2_default
+                     &pinctrl_nrts2_default>;
 };
 
 &uart3 {
@@ -159,21 +169,21 @@
 };
 
 &vuart {
-	status = "okay";
+        status = "okay";
 };
 
 &mac0 {
-	status = "okay";
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_rmii1_default>;
-	clocks = <&syscon ASPEED_CLK_GATE_MAC1CLK>,
-		 <&syscon ASPEED_CLK_MAC1RCLK>;
-	clock-names = "MACCLK", "RCLK";
-	use-ncsi;
+        status = "okay";
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_rmii1_default>;
+        clocks = <&syscon ASPEED_CLK_GATE_MAC1CLK>,
+                 <&syscon ASPEED_CLK_MAC1RCLK>;
+        clock-names = "MACCLK", "RCLK";
+        use-ncsi;
 };
 
 &mac1 {
-	status = "disabled";
+        status = "disabled";
 };
 
 &i2c0 {
@@ -237,6 +247,7 @@
 &i2c2 {
         status = "okay";
         multi-master;
+        bus-frequency = <400000>;
 
         // MMC BMC is at 0x41.
         // Listen for responses at 0x10
@@ -253,6 +264,7 @@
 
 &i2c4 {
         status = "okay";
+        bus-frequency = <400000>;
 
         // This bus has a connection to the host
 
@@ -267,7 +279,7 @@
 };
 
 &i2c6 {
-	status = "okay";
+    status = "okay";
 
         eeprom@50 {
                 compatible = "atmel,24c256";
@@ -370,7 +382,7 @@
                         &pinctrl_adc10_default
                         &pinctrl_adc11_default
                         &pinctrl_adc12_default
-			&pinctrl_adc13_default>;
+                        &pinctrl_adc13_default>;
 };
 
 &video {
@@ -379,8 +391,8 @@
 };
 
 &gpio {
-	/* NOTE: there isn't a MUX to switch between carrier and module EEPROM, so pick an unused line for
-	         spi0-backup-sel */
+    /* NOTE: there isn't a MUX to switch between carrier and module EEPROM, so pick an unused line for
+             spi0-backup-sel */
         gpio-line-names =
         /*A0-A7*/       "MAC1LINK","MAC2LINK","TIMER3_SPI1CS1","TIMER4","TIMER5_SCL9","TIMER6_SDA9","","",
         /*B0-B7*/       "","","","","USBCKI","LPCPD_LPCSMI","LPCPME","",
