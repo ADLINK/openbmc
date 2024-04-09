@@ -17,8 +17,9 @@
 
 do_flash () {
 	# Check the PNOR partition available
-	HOST_MTD=$(< /proc/mtd grep "pnor-uefi" | sed -n 's/^\(.*\):.*/\1/p')
-	if [ -z "$HOST_MTD" ];
+	HOST_FW_MTD=$(< /proc/mtd grep "\"pnor-uefi\"" | sed -n 's/^\(.*\):.*/\1/p')
+	HOST_FULL_MTD=$(< /proc/mtd grep "\"pnor\"" | sed -n 's/^\(.*\):.*/\1/p')
+	if [ -z "$HOST_FW_MTD" ];
 	then
 		# Check the ASpeed SMC driver bound before
 		HOST_SPI=/sys/bus/platform/drivers/spi-aspeed-smc/1e630000.spi
@@ -33,21 +34,31 @@ do_flash () {
 		echo 1e630000.spi > /sys/bus/platform/drivers/spi-aspeed-smc/bind
 		sleep 2
 
-		HOST_MTD=$(< /proc/mtd grep "pnor-uefi" | sed -n 's/^\(.*\):.*/\1/p')
-		if [ -z "$HOST_MTD" ];
+		HOST_FW_MTD=$(< /proc/mtd grep "\"pnor-uefi\"" | sed -n 's/^\(.*\):.*/\1/p')
+		HOST_FULL_MTD=$(< /proc/mtd grep "\"pnor\"" | sed -n 's/^\(.*\):.*/\1/p')
+		if [ -z "$HOST_FW_MTD" ];
 		then
 			echo "Fail to probe Host SPI-NOR device"
 			exit 1
 		fi
 	fi
 
-	echo "--- Flashing firmware to @/dev/$HOST_MTD"
-	flashcp.mtd-utils -p -v "$IMAGE" /dev/"$HOST_MTD"
+	extension=${IMAGE##*.}
+
+	if [ "$extension" = "img" ]; then
+		echo "--- Flashing firmware to @/dev/$HOST_FW_MTD"
+		flashcp.mtd-utils -p -v "$IMAGE" /dev/"$HOST_FW_MTD"
+	elif [ "$extension" = "bin" ]; then
+                echo "--- Flashing firmware to @/dev/$HOST_FULL_MTD"
+                flashcp.mtd-utils -p -v "$IMAGE" /dev/"$HOST_FULL_MTD"
+	else
+		echo "ERROR: Unknown file extension \"$extension\""
+	fi
 }
 
 
 if [ $# -eq 0 ]; then
-	echo "Usage: $(basename "$0") <BIOS image file>"
+	echo "Usage: $(basename "$0") <UEFI image file>"
 	exit 0
 fi
 
