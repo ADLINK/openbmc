@@ -188,6 +188,7 @@
 
 &i2c0 {
         status = "okay";
+	bus-frequency = <400000>;
 
         // This bus has a connection to the host
 
@@ -230,18 +231,15 @@
         };
 
         eeprom@50 { 
-                compatible = "atmel,24c256";
+                compatible = "atmel,24c64";
                 reg = <0x50>;
+		pagesize = <32>;
+		size = <65536>;
         };
 };
 
 &i2c1 {
         status = "okay";
-
-        rtc@51 {
-                compatible = "nxp,pcf85063a";
-                reg = <0x51>;
-        };
 };
 
 &i2c2 {
@@ -256,6 +254,12 @@
                 reg = <0x10>;
                 i2c-protocol;
         };
+
+	// EEPROM of unknown purpose
+        //eeprom@41 {
+        //        compatible = "atmel,24c256";
+        //        reg = <0x41>;
+        //};
 };
 
 &i2c3 {
@@ -280,15 +284,20 @@
 
 &i2c6 {
     status = "okay";
+    bus-frequency = <400000>;
 
-        eeprom@50 {
-                compatible = "atmel,24c256";
-                reg = <0x50>;
-        };
+    // FRU EEPROM
+    eeprom@50 {
+        compatible = "atmel,24c256";
+        reg = <0x50>;
+        pagesize = <64>;
+        size = <65536>;
+    };
 };
 
 &i2c7 {
         status = "okay";
+	bus-frequency = <400000>;
 
         front_temp: tmp112@48 {
                 compatible = "ti,tmp112";
