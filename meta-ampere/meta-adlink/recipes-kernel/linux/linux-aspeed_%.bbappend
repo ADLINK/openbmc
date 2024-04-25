@@ -9,6 +9,7 @@ SRC_URI += " \
             file://aspeed-bmc-adlink-comhpcalt-flash64-alt.dtsi  \
             file://aspeed-bmc-adlink-comhpcalt-flash128.dtsi     \
             file://aspeed-bmc-adlink-comhpcalt-flash128-alt.dtsi \
+            file://openbmc-flash-layout.dtsi                     \
             file://openbmc-flash-layout-32-alt.dtsi              \
             file://openbmc-flash-layout-64-alt.dtsi              \
             file://openbmc-flash-layout-128-alt.dtsi             \
@@ -38,7 +39,9 @@ copy_dts_file(){
         elif [ "${FLASH_SIZE}" = "131072" ]; then
             FLASH_MB=128
         fi
+
         cp -f ${WORKDIR}/aspeed-bmc-adlink-comhpcalt.dts ${S}/arch/arm/boot/dts/aspeed/
+        cp -f ${WORKDIR}/openbmc-flash-layout.dtsi ${S}/arch/arm/boot/dts/aspeed/
         cp -f ${WORKDIR}/aspeed-bmc-adlink-comhpcalt-flash${FLASH_MB}.dtsi ${S}/arch/arm/boot/dts/aspeed/aspeed-bmc-adlink-comhpcalt-flash.dtsi
         cp -f ${WORKDIR}/aspeed-bmc-adlink-comhpcalt-flash${FLASH_MB}-alt.dtsi ${S}/arch/arm/boot/dts/aspeed/aspeed-bmc-adlink-comhpcalt-flash-alt.dtsi
         cp -f ${WORKDIR}/openbmc-flash-layout-${FLASH_MB}-alt.dtsi ${S}/arch/arm/boot/dts/aspeed/openbmc-flash-layout-${FLASH_MB}-alt.dtsi
