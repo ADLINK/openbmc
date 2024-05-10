@@ -6,6 +6,7 @@ SRC_URI += " \
               file://ampere-phosphor-reboot-host@.service \
               file://phosphor-discover-system-state-override.conf \
               file://0001-Limit-power-actions-when-the-host-is-off.patch \
+              file://0002-Prevent-services-enter-failed-state-while-restarting.patch \
 	   "
 
 EXTRA_OEMESON:append = " \
