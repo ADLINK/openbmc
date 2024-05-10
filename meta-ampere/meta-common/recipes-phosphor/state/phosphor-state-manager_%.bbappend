@@ -5,6 +5,7 @@ PACKAGECONFIG:append = " host-gpio"
 SRC_URI += " \
               file://ampere-phosphor-reboot-host@.service \
               file://phosphor-discover-system-state-override.conf \
+              file://0001-Prevent-services-enter-failed-state-while-restarting.patch \
 	   "
 
 EXTRA_OEMESON:append = " \
