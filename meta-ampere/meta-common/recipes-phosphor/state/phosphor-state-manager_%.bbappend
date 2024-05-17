@@ -6,6 +6,7 @@ SRC_URI += " \
               file://ampere-phosphor-reboot-host@.service \
               file://phosphor-discover-system-state-override.conf \
               file://0001-Prevent-services-enter-failed-state-while-restarting.patch \
+              file://0002-host-state-emit-dbus-signals-while-initialization.patch \
 	      file://ampere_phosphor-service-monitor-default.json \
            "
 
