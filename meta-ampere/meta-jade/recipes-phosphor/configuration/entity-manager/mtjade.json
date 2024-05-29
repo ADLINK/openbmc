@@ -1504,7 +1504,6 @@
             {
                 "Address": "0x4f",
                 "Bus": 2,
-                "CpuID": 1,
                 "CurrScaleFactor": 1,
                 "InScaleFactor": 1,
                 "Labels": [
@@ -1674,7 +1673,6 @@
             {
                 "Address": "0x4e",
                 "Bus": 2,
-                "CpuID": 2,
                 "CurrScaleFactor": 1,
                 "InScaleFactor": 1,
                 "Labels": [
@@ -1710,12 +1708,6 @@
                 "Name": "CPU1",
                 "PowerScaleFactor": 1000,
                 "PowerState": "On",
-                "PresenceGpio": [
-                    {
-                        "Name": "presence-cpu1",
-                        "Polarity": "Low"
-                    }
-                ],
                 "TempScaleFactor": 1,
                 "Thresholds": [
                     {
@@ -1859,26 +1851,30 @@
             "UUID": "$MULTIRECORD_UUID"
         },
         "xyz.openbmc_project.Inventory.Decorator.Asset": {
+            "BuildDate": "$BOARD_MANUFACTURE_DATE",
             "Manufacturer": "$PRODUCT_MANUFACTURER",
             "Model": "$PRODUCT_PRODUCT_NAME $PRODUCT_VERSION",
-            "PartNumber": "$CHASSIS_PART_NUMBER",
+            "PartNumber": "$PRODUCT_PART_NUMBER",
             "SerialNumber": "$PRODUCT_SERIAL_NUMBER"
         },
         "xyz.openbmc_project.Inventory.Decorator.AssetTag": {
             "AssetTag": "$PRODUCT_ASSET_TAG"
         },
-        "xyz.openbmc_project.Inventory.Item.NetworkInterface": {
-            "MACAddress": "$BOARD_INFO_AM1"
+        "xyz.openbmc_project.Inventory.Decorator.Revision": {
+            "Version": "$PRODUCT_VERSION"
         },
-        "xyz.openbmc_project.Inventory.Item.System": {
-            "Manufacturer": "$PRODUCT_MANUFACTURER",
-            "PartNumber": "$PRODUCT_PART_NUMBER",
-            "SerialNumber": "$PRODUCT_SERIAL_NUMBER"
+        "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+            "Address": "$ADDRESS",
+            "Bus": "$BUS"
         },
         "xyz.openbmc_project.Inventory.Decorator.Compatible": {
             "Names": [
                 "com.ampere.Hardware.Chassis.Model.MtJade"
             ]
-        }
+        },
+        "xyz.openbmc_project.Inventory.Item.NetworkInterface": {
+            "MACAddress": "$BOARD_INFO_AM1"
+        },
+        "xyz.openbmc_project.Inventory.Item.System": {}
     }
 ]
