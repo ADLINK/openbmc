@@ -13,6 +13,7 @@ SRC_URI += "\
             file://0005-dbus-sdr-sel-support-getting-sensor-number-from-stat.patch \
             file://0006-chassishandler-Interpret-Transitioning-state-in-getP.patch \
             file://0007-dbus-sdr-support-to-get-Entity-Id-Instance-of-PLDM-s.patch \
+            file://0008-Read-Write-the-Asset-Tag-value-to-sync-field-Asset-T.patch \
             file://ampere-phosphor-softpoweroff \
             file://ampere.xyz.openbmc_project.Ipmi.Internal.SoftPowerOff.service \
            "
