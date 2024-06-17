@@ -75,7 +75,8 @@ function add_endpoints()
         state=$(s0_sensor_available)
         echo "add_endpoints s0_sensor_available $state" >> /tmp/mctp_i2c_binding.log
         if [[ "$state" == "0" ]]; then
-            cnt=20
+            # wait for S1 mctp ready in 180 seconds
+            cnt=180
             while [ $cnt -gt 0 ];
             do
                 state=$(s1_mctp_ready)
