@@ -4,6 +4,7 @@ SRC_URI += " \
             file://mtmitchell_bmc.json \
             file://blacklist.json \
             file://mtmitchell_bp.json \
+            file://mtmitchell_x16_riser.json \
            "
 
 do_install:append() {
@@ -13,5 +14,6 @@ do_install:append() {
      install -m 0444 ${WORKDIR}/mtmitchell_mb.json ${D}${datadir}/${PN}/configurations
      install -m 0444 ${WORKDIR}/mtmitchell_bmc.json ${D}${datadir}/${PN}/configurations
      install -m 0444 ${WORKDIR}/mtmitchell_bp.json ${D}${datadir}/${PN}/configurations
+     install -m 0444 ${WORKDIR}/mtmitchell_x16_riser.json ${D}${datadir}/${PN}/configurations
      rm -f ${D}${datadir}/${PN}/configurations/nvme_p4000.json
 }
