@@ -5,3 +5,6 @@ SRC_URI += " \
            "
 
 TARGET_LDFLAGS += "-luuid"
+
+PACKAGECONFIG:append = " fru-device-resizefru"
+PACKAGECONFIG[fru-device-resizefru] = "-Dfru-device-resizefru=true, -Dfru-device-resizefru=false"
