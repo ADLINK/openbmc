@@ -1,4 +1,4 @@
-From 78aa6e624d2b3e474065c566b999a7c174480e1a Mon Sep 17 00:00:00 2001
+From 409f14393d9bdbb994f33f257084aefdc61c0db4 Mon Sep 17 00:00:00 2001
 From: Thu Nguyen <thu@os.amperecomputing.com>
 Date: Tue, 19 Sep 2023 11:32:03 +0700
 Subject: [PATCH 2/7] amperecpu: Scan CPU sensors in the first power on
@@ -127,5 +127,5 @@ index 2aee61e..b2ccbab 100644
      io.run();
  
 -- 
-2.34.1
+2.25.1
 

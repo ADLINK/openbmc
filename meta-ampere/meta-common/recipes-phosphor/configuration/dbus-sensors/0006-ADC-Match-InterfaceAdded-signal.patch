@@ -1,7 +1,7 @@
-From 014b03bfa5e2c6ab5ffc27dcb634938d79d2a915 Mon Sep 17 00:00:00 2001
+From d4b070eba02f4d1526607fa6d872811ee4b5b2de Mon Sep 17 00:00:00 2001
 From: Thang Tran <thuutran@amperecomputing.com>
 Date: Wed, 22 May 2024 09:09:35 +0700
-Subject: [PATCH 7/7] ADC: Match `InterfaceAdded` signal
+Subject: [PATCH 6/7] ADC: Match `InterfaceAdded` signal
 
 In the system which uses the GPIO to identify the installation status
 of CPU. The `Present` property in the CPU object path of Inventory
@@ -200,5 +200,5 @@ index d76f954..962d628 100644
  
  using BasicVariantType =
 -- 
-2.34.1
+2.25.1
 

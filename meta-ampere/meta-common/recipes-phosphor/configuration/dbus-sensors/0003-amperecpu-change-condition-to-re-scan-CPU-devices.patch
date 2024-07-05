@@ -1,7 +1,7 @@
-From 4ee070bbcda3e4fe1e3acfa3c7f257a836ba9b02 Mon Sep 17 00:00:00 2001
+From 9d5b5c61980955e5bca20caf9db51a6e9a29ac0e Mon Sep 17 00:00:00 2001
 From: Quang Nguyen <quangn@amperecomputing.com>
 Date: Tue, 19 Sep 2023 11:33:21 +0700
-Subject: [PATCH 4/7] amperecpu: change condition to re-scan CPU devices
+Subject: [PATCH 3/7] amperecpu: change condition to re-scan CPU devices
 
 Before creating CPU sensors, dbus-sensors will scan for the number of CPU
 devices. Sometimes, when BMC is rebooted, the quantity of CPU devices are
@@ -23,7 +23,7 @@ Signed-off-by: Quang Nguyen <quangn@amperecomputing.com>
  1 file changed, 77 insertions(+), 7 deletions(-)
 
 diff --git a/src/AmpereCPUMain.cpp b/src/AmpereCPUMain.cpp
-index fd894f4..846d11e 100644
+index b2ccbab..8c91e3a 100644
 --- a/src/AmpereCPUMain.cpp
 +++ b/src/AmpereCPUMain.cpp
 @@ -34,6 +34,7 @@
@@ -34,9 +34,9 @@ index fd894f4..846d11e 100644
  
  namespace fs = std::filesystem;
  
-@@ -50,7 +51,80 @@ static boost::container::flat_map<
-     std::string, std::shared_ptr<sdbusplus::asio::dbus_interface>>
-     inventoryIfaces;
+@@ -47,7 +48,80 @@ static boost::container::flat_map<std::string, std::string> sensorTable;
+ static boost::container::flat_map<std::string, AmpereCPUProperty> propMatch;
+ static std::vector<AmpereCPUProperty> socProperties;
  static std::regex i2cDevRegex(R"((\d+)-([a-fA-F0-9]+))");
 -static bool createdSensors = false;
 +std::map<size_t, size_t> createdCpuDevice;
@@ -116,7 +116,7 @@ index fd894f4..846d11e 100644
  
  static bool getDeviceInfo(const std::string& devPath, size_t* bus, size_t* addr)
  {
-@@ -535,11 +609,7 @@ static void createSensorsCallback(
+@@ -512,11 +586,7 @@ static void createSensorsCallback(
                            *sensorData, *interfacePath, *devType, directory,
                            &numCreated);
  
@@ -129,7 +129,7 @@ index fd894f4..846d11e 100644
          std::cerr << "Device " << bus << ":" << addr << " have " << numCreated
                    << " sensors \n";
      }
-@@ -552,7 +622,7 @@ void createSensors(boost::asio::io_context& io,
+@@ -529,7 +599,7 @@ void createSensors(boost::asio::io_context& io,
      auto getter = std::make_shared<GetSensorConfiguration>(
          dbusConnection, [&io, &objectServer, &dbusConnection](
                              const ManagedObjectType& sensorConfigs) {
@@ -139,5 +139,5 @@ index fd894f4..846d11e 100644
                  createSensorsCallback(io, objectServer, dbusConnection,
                                        sensorConfigs);
 -- 
-2.34.1
+2.25.1
 

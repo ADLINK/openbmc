@@ -1,7 +1,7 @@
-From 0a5b5c603c68c1fb863d98ca125fef709ddd3ea9 Mon Sep 17 00:00:00 2001
+From 341437c50852fea490fc64cc20613a40cac4d8f8 Mon Sep 17 00:00:00 2001
 From: Thang Tran <thuutran@amperecomputing.com>
 Date: Wed, 22 May 2024 09:08:38 +0700
-Subject: [PATCH 6/7] adcsensor: Add support DevName option
+Subject: [PATCH 5/7] adcsensor: Add support DevName option
 
 When there are many ADC devices, the sensor index of different ADC
 devices can be dupplicated. So only matching the sensor path index
@@ -109,5 +109,5 @@ index 723ff01..7e9c36a 100644
                  if (findIndex == baseConfiguration->second.end())
                  {
 -- 
-2.34.1
+2.25.1
 

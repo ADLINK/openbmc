@@ -1,7 +1,7 @@
-From 20179286bbc3837e2f187b1541db34f1cd71c50e Mon Sep 17 00:00:00 2001
+From 438aa9b9b81539ee124f81814bfcd8123ee0f222 Mon Sep 17 00:00:00 2001
 From: Thang Tran <thuutran@amperecomputing.com>
 Date: Mon, 13 Nov 2023 16:15:04 +0700
-Subject: [PATCH 5/7] Remove throwing exception when can not write data to file
+Subject: [PATCH 4/7] Remove throwing exception when can not write data to file
 
 Currently, the Collins board is using Chicony PSU. But driver for this one is
 setting the perimission for fan1_target file to 'read only'. It make the
@@ -29,5 +29,5 @@ index 2a431eb..735c50a 100644
      ref << value;
  }
 -- 
-2.34.1
+2.25.1
 
